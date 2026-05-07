@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Calling</string>
+    <string name="tile_label">Fake call tile</string>
+    <string name="complication_label">Fake call shortcut</string>
+    <string name="watch_brand_line">STUDIO</string>
+    <string name="watch_title">Call pulse</string>
+    <string name="watch_subtitle">Pick a caller, then tap to make your phone show the fake incoming call screen.</string>
+    <string name="watch_caller_label">Caller: %1$s</string>
+    <string name="watch_trigger_label">Call phone</string>
+    <string name="watch_status_ready">Ready to trigger your phone</string>
+    <string name="watch_status_sending">Calling…</string>
+    <string name="watch_status_sent">Calling phone</string>
+    <string name="watch_status_no_phone">No phone connected over Bluetooth</string>
+    <string name="watch_status_app_missing">Connected phone does not have the Calling app</string>
+    <string name="watch_status_failed">Could not reach your phone. Open the phone app once and try again.</string>
+    <string name="watch_tile_title">Call pulse</string>
+    <string name="watch_tile_body">Open the app to trigger your phone</string>
+</resources>

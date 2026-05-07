@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Calling</string>
+    <string name="fake_call_default_name">Unknown caller</string>
+    <string name="fake_call_notification_title">Incoming call</string>
+    <string name="fake_call_channel_name">Incoming calls</string>
+    <string name="fake_call_incoming_label">Incoming call</string>
+    <string name="fake_call_subtitle">Mobile · Slide to focus</string>
+    <string name="fake_call_connected_label">Call picked up</string>
+    <string name="fake_call_connected_timer">00:00</string>
+    <string name="fake_call_mute">Mute</string>
+    <string name="fake_call_keypad">Keypad</string>
+    <string name="fake_call_speaker">Speaker</string>
+    <string name="fake_call_end">End call</string>
+    <string name="fake_call_decline">Decline</string>
+    <string name="fake_call_answer">Answer</string>
+    <string name="phone_eyebrow">Fake Calling</string>
+    <string name="phone_title">Trigger a fake incoming call on this phone</string>
+    <string name="phone_subtitle">Use the phone controls below or tap the Wear app to send a fake call from your watch.</string>
+    <string name="phone_caller_label">Caller name</string>
+    <string name="phone_caller_hint">Who should appear on screen?</string>
+    <string name="phone_default_caller">Priority line</string>
+    <string name="phone_delay_label">Delay</string>
+    <string name="phone_delay_instant">Now</string>
+    <string name="phone_delay_5">5s</string>
+    <string name="phone_delay_15">15s</string>
+    <string name="phone_delay_30">30s</string>
+    <string name="phone_trigger_button">Trigger fake call</string>
+    <string name="phone_cancel_button">Cancel scheduled call</string>
+    <string name="phone_watch_hint">Tip: keep the companion app open once on your phone so your watch can discover it faster.</string>
+    <string name="phone_scheduled_label">Scheduled status</string>
+    <string name="phone_scheduled_none">No fake call is currently scheduled.</string>
+    <string name="phone_scheduled_summary">Next fake call: %1$s at %2$s</string>
+    <string name="phone_triggered_now">%1$s is calling now.</string>
+    <string name="phone_triggered_delay">%1$s will call in %2$d seconds.</string>
+    <string name="phone_cancelled">Scheduled fake call cancelled.</string>
+</resources>

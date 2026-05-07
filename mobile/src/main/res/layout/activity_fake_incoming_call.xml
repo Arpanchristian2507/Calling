@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fakeIncomingRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fake_call_bg"
+    tools:context=".FakeIncomingCallActivity">
+
+    <TextView
+        android:id="@+id/incomingLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:letterSpacing="0.12"
+        android:text="@string/fake_call_incoming_label"
+        android:textAllCaps="true"
+        android:textColor="@color/fake_call_muted"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/callerName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="12dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="2"
+        android:textColor="@color/fake_call_on_bg"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/incomingLabel"
+        tools:text="Alex Morgan" />
+
+    <TextView
+        android:id="@+id/subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/fake_call_subtitle"
+        android:textColor="@color/fake_call_muted"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/callerName" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/avatarRing"
+        android:layout_width="168dp"
+        android:layout_height="168dp"
+        android:layout_marginTop="40dp"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardCornerRadius="84dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/subtitle"
+        app:strokeColor="@color/fake_call_ring"
+        app:strokeWidth="2dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@null"
+            android:padding="18dp"
+            android:src="@drawable/ic_fake_call_person"
+            app:tint="@color/fake_call_muted" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mute"
+        style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="40dp"
+        android:contentDescription="@string/fake_call_mute"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:visibility="gone"
+        app:backgroundTint="@color/fake_call_control"
+        app:cornerRadius="36dp"
+        app:icon="@drawable/ic_fake_call_mic_off"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:iconSize="30dp"
+        app:iconTint="@color/white"
+        app:layout_constraintEnd_toStartOf="@id/keypad"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/avatarRing" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/keypad"
+        style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_marginHorizontal="28dp"
+        android:contentDescription="@string/fake_call_keypad"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:visibility="gone"
+        app:backgroundTint="@color/fake_call_control"
+        app:cornerRadius="36dp"
+        app:icon="@drawable/ic_fake_call_keypad"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:iconSize="28dp"
+        app:iconTint="@color/white"
+        app:layout_constraintEnd_toStartOf="@id/speaker"
+        app:layout_constraintStart_toEndOf="@id/mute"
+        app:layout_constraintTop_toTopOf="@id/mute" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/speaker"
+        style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:contentDescription="@string/fake_call_speaker"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:visibility="gone"
+        app:backgroundTint="@color/fake_call_control"
+        app:cornerRadius="36dp"
+        app:icon="@drawable/ic_fake_call_speaker"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:iconSize="30dp"
+        app:iconTint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/keypad"
+        app:layout_constraintTop_toTopOf="@id/mute" />
+
+    <TextView
+        android:id="@+id/muteLabel"
+        android:layout_width="72dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="@string/fake_call_mute"
+        android:textColor="@color/fake_call_on_bg"
+        android:textSize="12sp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@id/mute"
+        app:layout_constraintTop_toBottomOf="@id/mute" />
+
+    <TextView
+        android:id="@+id/keypadLabel"
+        android:layout_width="72dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="@string/fake_call_keypad"
+        android:textColor="@color/fake_call_on_bg"
+        android:textSize="12sp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@id/keypad"
+        app:layout_constraintTop_toBottomOf="@id/keypad" />
+
+    <TextView
+        android:id="@+id/speakerLabel"
+        android:layout_width="72dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="@string/fake_call_speaker"
+        android:textColor="@color/fake_call_on_bg"
+        android:textSize="12sp"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@id/speaker"
+        app:layout_constraintTop_toBottomOf="@id/speaker" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/decline"
+        style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:layout_marginBottom="56dp"
+        app:backgroundTint="@color/fake_call_decline"
+        android:contentDescription="@string/fake_call_decline"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        app:cornerRadius="44dp"
+        app:icon="@drawable/ic_fake_call_decline"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:iconSize="40dp"
+        app:iconTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/answer"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/answer"
+        style="@style/Widget.Material3.Button.IconButton.Filled"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginBottom="56dp"
+        app:backgroundTint="@color/fake_call_answer"
+        android:contentDescription="@string/fake_call_answer"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        app:cornerRadius="44dp"
+        app:icon="@drawable/ic_fake_call_answer"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:iconSize="40dp"
+        app:iconTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/decline" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/endCall"
+        style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:layout_marginBottom="56dp"
+        android:contentDescription="@string/fake_call_end"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:visibility="gone"
+        app:backgroundTint="@color/fake_call_decline"
+        app:cornerRadius="44dp"
+        app:icon="@drawable/ic_fake_call_decline"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:iconSize="40dp"
+        app:iconTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
