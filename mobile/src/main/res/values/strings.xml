@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">Calling</string>
     <string name="fake_call_default_name">Unknown caller</string>
     <string name="fake_call_notification_title">Incoming call</string>
     <string name="fake_call_channel_name">Incoming calls</string>
@@ -18,6 +17,13 @@
     <string name="phone_subtitle">Use the phone controls below or tap the Wear app to send a fake call from your watch.</string>
     <string name="phone_caller_label">Caller name</string>
     <string name="phone_caller_hint">Who should appear on screen?</string>
+    <string name="phone_caller_photo_label">Caller photo</string>
+    <string name="phone_choose_caller_photo">Choose from gallery</string>
+    <string name="phone_clear_caller_photo">Remove photo</string>
+    <string name="phone_caller_photo_saved">Caller photo updated. It will show on the incoming call screen.</string>
+    <string name="phone_caller_photo_cleared">Caller photo removed.</string>
+    <string name="phone_caller_photo_failed">Could not use that image. Try a different photo.</string>
+    <string name="content_desc_caller_avatar">Caller photo</string>
     <string name="phone_default_caller">Priority line</string>
     <string name="phone_delay_label">Delay</string>
     <string name="phone_delay_instant">Now</string>
@@ -33,4 +39,19 @@
     <string name="phone_triggered_now">%1$s is calling now.</string>
     <string name="phone_triggered_delay">%1$s will call in %2$d seconds.</string>
     <string name="phone_cancelled">Scheduled fake call cancelled.</string>
+
+    <!-- Full-screen call UI (incoming + in-call layouts) -->
+    <string name="call_incoming">Incoming call</string>
+    <string name="call_swipe_hint">Swipe to answer or decline</string>
+    <string name="call_answer">Answer</string>
+    <string name="call_decline">Decline</string>
+    <string name="call_on_call">On call</string>
+    <string name="call_end">End call</string>
+    <string name="call_mute">Mute</string>
+    <string name="call_keypad">Keypad</string>
+    <string name="call_speaker">Speaker</string>
+    <string name="call_add">Add call</string>
+    <string name="call_hold">Hold</string>
+    <string name="call_video">Video</string>
+    <string name="call_timer_default">0:00</string>
 </resources>

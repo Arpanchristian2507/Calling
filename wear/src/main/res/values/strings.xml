@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">Calling</string>
     <string name="tile_label">Fake call tile</string>
     <string name="complication_label">Fake call shortcut</string>
     <string name="watch_brand_line">STUDIO</string>

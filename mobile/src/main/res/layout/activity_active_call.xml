@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activeCallRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_call_active_gradient"
+    tools:context=".FakeIncomingCallActivity">
+
+    <!-- On call label -->
+    <TextView
+        android:id="@+id/onCallLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:letterSpacing="0.15"
+        android:text="@string/call_on_call"
+        android:textAllCaps="true"
+        android:textColor="#80FFFFFF"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Caller name -->
+    <TextView
+        android:id="@+id/callerName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="10dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="2"
+        android:textColor="#FFFFFF"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/onCallLabel"
+        tools:text="Christina Adams" />
+
+    <!-- Phone number -->
+    <TextView
+        android:id="@+id/callerNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:textColor="#66FFFFFF"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/callerName"
+        tools:text="012 3456 7890" />
+
+    <!-- Avatar circle -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/avatarCard"
+        android:layout_width="112dp"
+        android:layout_height="112dp"
+        android:layout_marginTop="36dp"
+        app:cardBackgroundColor="#22FFFFFF"
+        app:cardCornerRadius="56dp"
+        app:cardElevation="0dp"
+        app:strokeColor="#44FFFFFF"
+        app:strokeWidth="1.5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/callerNumber">
+
+        <ImageView
+            android:id="@+id/callerAvatar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/content_desc_caller_avatar"
+            android:padding="20dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_person_outline"
+            app:tint="#80FFFFFF" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Call timer -->
+    <TextView
+        android:id="@+id/callTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:fontFamily="monospace"
+        android:textColor="#80FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/avatarCard"
+        tools:text="0:00" />
+
+    <!-- ── In-call control buttons row ── -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/muteButton"
+        style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="52dp"
+        android:contentDescription="@string/call_mute"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        app:backgroundTint="#33FFFFFF"
+        app:cornerRadius="32dp"
+        app:icon="@drawable/ic_mic_off"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:iconSize="28dp"
+        app:iconTint="@color/white"
+        app:layout_constraintEnd_toStartOf="@id/keypadButton"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/callTimer"
+        android:layout_marginStart="36dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/keypadButton"
+        style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:contentDescription="@string/call_keypad"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        app:backgroundTint="#33FFFFFF"
+        app:cornerRadius="32dp"
+        app:icon="@drawable/ic_dialpad"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:iconSize="26dp"
+        app:iconTint="@color/white"
+        app:layout_constraintEnd_toStartOf="@id/speakerButton"
+        app:layout_constraintStart_toEndOf="@id/muteButton"
+        app:layout_constraintTop_toTopOf="@id/muteButton" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/speakerButton"
+        style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:contentDescription="@string/call_speaker"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        app:backgroundTint="#33FFFFFF"
+        app:cornerRadius="32dp"
+        app:icon="@drawable/ic_volume_up"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:iconSize="28dp"
+        app:iconTint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/keypadButton"
+        app:layout_constraintTop_toTopOf="@id/muteButton"
+        android:layout_marginEnd="36dp" />
+
+    <!-- Control labels -->
+    <TextView
+        android:id="@+id/muteLabel"
+        android:layout_width="64dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="@string/call_mute"
+        android:textColor="#80FFFFFF"
+        android:textSize="11sp"
+        app:layout_constraintStart_toStartOf="@id/muteButton"
+        app:layout_constraintTop_toBottomOf="@id/muteButton" />
+
+    <TextView
+        android:id="@+id/keypadLabel"
+        android:layout_width="64dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="@string/call_keypad"
+        android:textColor="#80FFFFFF"
+        android:textSize="11sp"
+        app:layout_constraintStart_toStartOf="@id/keypadButton"
+        app:layout_constraintTop_toBottomOf="@id/keypadButton" />
+
+    <TextView
+        android:id="@+id/speakerLabel"
+        android:layout_width="64dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="@string/call_speaker"
+        android:textColor="#80FFFFFF"
+        android:textSize="11sp"
+        app:layout_constraintStart_toStartOf="@id/speakerButton"
+        app:layout_constraintTop_toBottomOf="@id/speakerButton" />
+
+    <!-- Second row of controls: Add call, Hold, Video -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/addCallButton"
+        style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="28dp"
+        android:contentDescription="@string/call_add"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        app:backgroundTint="#33FFFFFF"
+        app:cornerRadius="32dp"
+        app:icon="@drawable/ic_add_call"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:iconSize="28dp"
+        app:iconTint="@color/white"
+        app:layout_constraintEnd_toStartOf="@id/holdButton"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/muteLabel"
+        android:layout_marginStart="36dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/holdButton"
+        style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:contentDescription="@string/call_hold"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        app:backgroundTint="#33FFFFFF"
+        app:cornerRadius="32dp"
+        app:icon="@drawable/ic_pause"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:iconSize="28dp"
+        app:iconTint="@color/white"
+        app:layout_constraintEnd_toStartOf="@id/videoButton"
+        app:layout_constraintStart_toEndOf="@id/addCallButton"
+        app:layout_constraintTop_toTopOf="@id/addCallButton" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/videoButton"
+        style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:contentDescription="@string/call_video"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        app:backgroundTint="#33FFFFFF"
+        app:cornerRadius="32dp"
+        app:icon="@drawable/ic_videocam"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:iconSize="28dp"
+        app:iconTint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/holdButton"
+        app:layout_constraintTop_toTopOf="@id/addCallButton"
+        android:layout_marginEnd="36dp" />
+
+    <TextView
+        android:id="@+id/addCallLabel"
+        android:layout_width="64dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="@string/call_add"
+        android:textColor="#80FFFFFF"
+        android:textSize="11sp"
+        app:layout_constraintStart_toStartOf="@id/addCallButton"
+        app:layout_constraintTop_toBottomOf="@id/addCallButton" />
+
+    <TextView
+        android:id="@+id/holdLabel"
+        android:layout_width="64dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="@string/call_hold"
+        android:textColor="#80FFFFFF"
+        android:textSize="11sp"
+        app:layout_constraintStart_toStartOf="@id/holdButton"
+        app:layout_constraintTop_toBottomOf="@id/holdButton" />
+
+    <TextView
+        android:id="@+id/videoLabel"
+        android:layout_width="64dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="@string/call_video"
+        android:textColor="#80FFFFFF"
+        android:textSize="11sp"
+        app:layout_constraintStart_toStartOf="@id/videoButton"
+        app:layout_constraintTop_toBottomOf="@id/videoButton" />
+
+    <!-- End call button (centered, bottom) -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/endCallButton"
+        style="@style/Widget.Material3.Button.IconButton.Filled"
+        android:layout_width="76dp"
+        android:layout_height="76dp"
+        android:layout_marginBottom="52dp"
+        android:contentDescription="@string/call_end"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        app:backgroundTint="#E53935"
+        app:cornerRadius="38dp"
+        app:icon="@drawable/ic_call_decline"
+        app:iconGravity="textStart"
+        app:iconPadding="0dp"
+        app:iconSize="34dp"
+        app:iconTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Home indicator bar -->
+    <View
+        android:layout_width="120dp"
+        android:layout_height="4dp"
+        android:layout_marginBottom="10dp"
+        android:background="#44FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

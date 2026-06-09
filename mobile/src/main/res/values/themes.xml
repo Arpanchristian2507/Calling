@@ -1,8 +1,27 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
     <style name="Base.Theme.Calling" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/calling_primary</item>
+        <item name="colorOnPrimary">@color/calling_on_primary</item>
+        <item name="colorPrimaryContainer">@color/calling_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/calling_on_primary_container</item>
+        <item name="colorSecondary">@color/calling_secondary</item>
+        <item name="colorOnSecondary">@color/calling_on_secondary</item>
+        <item name="colorSecondaryContainer">@color/calling_secondary_container</item>
+        <item name="colorOnSecondaryContainer">@color/calling_on_secondary_container</item>
+        <item name="colorSurface">@color/calling_surface</item>
+        <item name="colorOnSurface">@color/calling_on_surface</item>
+        <item name="colorSurfaceVariant">@color/calling_surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/calling_on_surface_variant</item>
+        <item name="colorOutline">@color/calling_outline</item>
+        <item name="colorOutlineVariant">@color/calling_outline_variant</item>
+        <item name="android:colorBackground">@color/calling_background</item>
+        <item name="colorOnBackground">@color/calling_on_background</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="fontFamily">sans-serif-medium</item>
+        <item name="textAppearanceHeadlineLarge">@style/TextAppearance.Calling.SerifLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/TextAppearance.Calling.SerifTitle</item>
     </style>
 
     <style name="Theme.Calling" parent="Base.Theme.Calling" />
@@ -11,5 +30,62 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="27">shortEdges</item>
+        <item name="android:fontFamily">serif</item>
+        <item name="fontFamily">serif</item>
+    </style>
+
+    <!-- Full-screen fake call (see call UI drawables + colors) -->
+    <style name="Theme.Calling.FullScreenCall" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowBackground">@android:color/black</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:statusBarColor">@color/transparent</item>
+        <item name="android:navigationBarColor">@color/transparent</item>
+        <item name="colorPrimary">@color/call_answer_green</item>
+        <item name="colorOnPrimary">@color/white</item>
+    </style>
+
+    <style name="Theme.Calling.FullScreenCall.Incoming" parent="Theme.Calling.FullScreenCall">
+        <item name="android:windowBackground">@drawable/bg_call_gradient</item>
+    </style>
+
+    <style name="Theme.Calling.FullScreenCall.Active" parent="Theme.Calling.FullScreenCall">
+        <item name="android:windowBackground">@drawable/bg_call_active_gradient</item>
+    </style>
+
+    <style name="Widget.Calling.CallButton.Round" parent="Widget.Material3.Button.IconButton.Filled">
+        <item name="android:layout_width">76dp</item>
+        <item name="android:layout_height">76dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="cornerRadius">38dp</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconPadding">0dp</item>
+        <item name="iconSize">34dp</item>
+        <item name="iconTint">@color/white</item>
+    </style>
+
+    <style name="Widget.Calling.CallButton.Answer" parent="Widget.Calling.CallButton.Round">
+        <item name="backgroundTint">@color/call_answer_green</item>
+        <item name="android:contentDescription">@string/call_answer</item>
+    </style>
+
+    <style name="Widget.Calling.CallButton.Decline" parent="Widget.Calling.CallButton.Round">
+        <item name="backgroundTint">@color/call_decline_red</item>
+        <item name="android:contentDescription">@string/call_decline</item>
+    </style>
+
+    <style name="Widget.Calling.CallButton.Control" parent="Widget.Material3.Button.IconButton.Filled.Tonal">
+        <item name="android:layout_width">64dp</item>
+        <item name="android:layout_height">64dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="backgroundTint">@color/call_control_bg</item>
+        <item name="cornerRadius">32dp</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconPadding">0dp</item>
+        <item name="iconSize">28dp</item>
+        <item name="iconTint">@color/white</item>
     </style>
 </resources>

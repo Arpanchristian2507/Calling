@@ -2,11 +2,55 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="fake_call_bg">#FF070A12</color>
-    <color name="fake_call_on_bg">#FFF2F5FF</color>
-    <color name="fake_call_muted">#FF8B93A8</color>
-    <color name="fake_call_ring">#FF3D4A66</color>
-    <color name="fake_call_control">#FF1E2638</color>
+
+    <!-- Brand seed: #72ad37 -->
+    <color name="calling_primary">#FF72AD37</color>
+    <color name="calling_on_primary">#FF0F1608</color>
+    <color name="calling_primary_container">#FF4A7224</color>
+    <color name="calling_on_primary_container">#FFD8EEB8</color>
+    <color name="calling_secondary">#FF8A6F4A</color>
+    <color name="calling_on_secondary">#FFFFF8F0</color>
+    <color name="calling_secondary_container">#FF3D2E1C</color>
+    <color name="calling_on_secondary_container">#FFE8D4BC</color>
+
+    <!-- Light surfaces -->
+    <color name="calling_background">#FFF4F7EE</color>
+    <color name="calling_surface">#FFFFFFFF</color>
+    <color name="calling_surface_variant">#FFE6EDD9</color>
+    <color name="calling_on_background">#FF14190F</color>
+    <color name="calling_on_surface">#FF090505</color>
+    <color name="calling_on_surface_variant">#FF4A5540</color>
+    <color name="calling_outline">#FFB8C9A3</color>
+    <color name="calling_outline_variant">#FFD5E0C4</color>
+    <color name="calling_accent_muted">#FF5F7A45</color>
+
+    <!-- Fake incoming call (harmonized with brand) -->
+    <color name="fake_call_bg">#FF0C1008</color>
+    <color name="fake_call_on_bg">#FFF2F6EC</color>
+    <color name="fake_call_muted">#FFB4C4A8</color>
+    <color name="fake_call_ring">#FF5A8C32</color>
+    <color name="fake_call_control">#FF1E2815</color>
     <color name="fake_call_decline">#FFE53935</color>
-    <color name="fake_call_answer">#FF2E7D32</color>
+    <color name="fake_call_answer">@color/calling_primary</color>
+
+    <!-- Full-screen fake call UI (gradients / controls) -->
+    <color name="transparent">#00000000</color>
+    <color name="call_bg_start">#1A1A2E</color>
+    <color name="call_bg_center">#16213E</color>
+    <color name="call_bg_end">#0F3460</color>
+    <color name="call_active_bg_start">#0D1117</color>
+    <color name="call_active_bg_end">#161B22</color>
+    <color name="call_text_primary">#FFFFFF</color>
+    <color name="call_text_secondary">#99FFFFFF</color>
+    <color name="call_text_hint">#55FFFFFF</color>
+    <color name="call_answer_green">#1DB954</color>
+    <color name="call_decline_red">#E53935</color>
+    <color name="call_control_bg">#33FFFFFF</color>
+    <color name="call_control_active_bg">#66FFFFFF</color>
+    <color name="call_avatar_bg">#22FFFFFF</color>
+    <color name="call_avatar_stroke">#55FFFFFF</color>
+    <color name="call_dot_color">#55FFFFFF</color>
+    <color name="call_home_bar">#44FFFFFF</color>
+    <color name="call_ripple_green">#FF388E3C</color>
+    <color name="call_ripple_red">#FFB71C1C</color>
 </resources>
