@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <style name="Base.Theme.Calling" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/calling_primary</item>
         <item name="colorOnPrimary">@color/calling_on_primary</item>
@@ -29,7 +29,7 @@
     <style name="Theme.Calling.FakeCall" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
-        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="27">shortEdges</item>
+        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
         <item name="android:fontFamily">serif</item>
         <item name="fontFamily">serif</item>
     </style>

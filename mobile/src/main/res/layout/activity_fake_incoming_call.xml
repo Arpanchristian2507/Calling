@@ -5,136 +5,487 @@
     android:id="@+id/callScreensRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_call_gradient"
+    android:background="@drawable/anim_samsung_call_screen_gradient"
     tools:context=".FakeIncomingCallActivity">
 
-    <!-- Ringing / incoming only; active call uses @layout/activity_active_call (inflated in code). -->
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ImageView
+        android:id="@+id/callBackgroundImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop"
+        android:visibility="gone" />
+
+    <View
+        android:id="@+id/callBackgroundScrim"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/call_screen_bg_scrim"
+        android:visibility="gone" />
+
+    <FrameLayout
         android:id="@+id/incomingCallRoot"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/incomingLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/call_top_margin"
-            android:letterSpacing="0.15"
-            android:text="@string/fake_call_incoming_label"
-            android:textAllCaps="true"
-            android:textColor="@color/call_text_secondary"
-            android:textSize="@dimen/call_text_label"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <!-- Samsung One UI–style incoming (reference: Galaxy Phone app) -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/incomingSamsungPane"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible">
 
-        <TextView
-            android:id="@+id/callerName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/call_name_horizontal_margin"
-            android:layout_marginTop="@dimen/call_label_top_margin"
-            android:ellipsize="end"
-            android:gravity="center"
-            android:maxLines="2"
-            android:textColor="@color/call_text_primary"
-            android:textSize="@dimen/call_text_name"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/incomingLabel"
-            tools:text="Priority line" />
+            <LinearLayout
+                android:id="@+id/samsungHdRow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/samsung_incoming_top_margin"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/subtitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/call_number_top_margin"
-            android:gravity="center"
-            android:text="@string/fake_call_subtitle"
-            android:textColor="@color/call_text_secondary"
-            android:textSize="@dimen/call_text_number"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/callerName"
-            tools:text="Mobile · Slide to focus" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_samsung_sim_badge"
+                    android:gravity="center"
+                    android:minWidth="22dp"
+                    android:minHeight="22dp"
+                    android:paddingHorizontal="6dp"
+                    android:paddingVertical="3dp"
+                    android:text="@string/fake_call_samsung_sim_slot_label"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/avatarCard"
-            android:layout_width="@dimen/call_avatar_size"
-            android:layout_height="@dimen/call_avatar_size"
-            android:layout_marginTop="@dimen/call_avatar_top_margin"
-            app:cardBackgroundColor="@color/call_avatar_bg"
-            app:cardCornerRadius="@dimen/call_avatar_radius"
-            app:cardElevation="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/subtitle"
-            app:strokeColor="@color/call_avatar_stroke"
-            app:strokeWidth="@dimen/call_avatar_stroke">
+                <TextView
+                    android:id="@+id/samsungIncomingTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/fake_call_samsung_incoming_title"
+                    android:textColor="@color/white"
+                    android:textSize="17sp" />
+            </LinearLayout>
 
-            <ImageView
-                android:id="@+id/callerAvatar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:contentDescription="@string/content_desc_caller_avatar"
-                android:padding="@dimen/call_avatar_padding"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_person_outline"
-                app:tint="@color/call_text_secondary" />
-        </com.google.android.material.card.MaterialCardView>
+            <TextView
+                android:id="@+id/samsungCallerName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="28dp"
+                android:layout_marginTop="28dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="2"
+                android:textColor="@color/white"
+                android:textSize="@dimen/samsung_caller_name_sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/samsungHdRow"
+                tools:text="Mom" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/answer"
-            style="@style/Widget.Material3.Button.IconButton.Filled"
-            android:layout_width="@dimen/call_main_btn_size"
-            android:layout_height="@dimen/call_main_btn_size"
-            android:layout_marginBottom="@dimen/call_action_btn_bottom_margin"
-            android:contentDescription="@string/fake_call_answer"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            app:backgroundTint="@color/call_answer_green"
-            app:cornerRadius="@dimen/call_main_btn_radius"
-            app:icon="@drawable/ic_call_answer"
-            app:iconGravity="textStart"
-            app:iconPadding="0dp"
-            app:iconSize="@dimen/call_main_icon_size"
-            app:iconTint="@color/white"
-            app:layout_constraintBottom_toTopOf="@id/homeBar"
-            app:layout_constraintEnd_toStartOf="@id/decline"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginEnd="@dimen/call_btn_gap" />
+            <TextView
+                android:id="@+id/samsungCallerSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="@string/fake_call_samsung_subtitle"
+                android:textColor="#E6FFFFFF"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/samsungCallerName" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/decline"
-            style="@style/Widget.Material3.Button.IconButton.Filled"
-            android:layout_width="@dimen/call_main_btn_size"
-            android:layout_height="@dimen/call_main_btn_size"
-            android:layout_marginBottom="@dimen/call_action_btn_bottom_margin"
-            android:contentDescription="@string/fake_call_decline"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            app:backgroundTint="@color/call_decline_red"
-            app:cornerRadius="@dimen/call_main_btn_radius"
-            app:icon="@drawable/ic_call_decline"
-            app:iconGravity="textStart"
-            app:iconPadding="0dp"
-            app:iconSize="@dimen/call_main_icon_size"
-            app:iconTint="@color/white"
-            app:layout_constraintBottom_toTopOf="@id/homeBar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/answer" />
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/samsungCallerAvatarCard"
+                android:layout_width="@dimen/samsung_incoming_avatar_size"
+                android:layout_height="@dimen/samsung_incoming_avatar_size"
+                android:layout_marginTop="28dp"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:cardElevation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/samsungCallerSubtitle"
+                app:strokeColor="#66FFFFFF"
+                app:strokeWidth="2dp"
+                app:cardCornerRadius="60dp">
 
-        <View
-            android:id="@+id/homeBar"
-            android:layout_width="@dimen/call_home_bar_width"
-            android:layout_height="@dimen/call_home_bar_height"
-            android:layout_marginBottom="@dimen/call_home_bar_bottom_margin"
-            android:background="@color/call_home_bar"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+                <ImageView
+                    android:id="@+id/samsungCallerAvatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/content_desc_caller_avatar"
+                    android:scaleType="centerCrop" />
+            </com.google.android.material.card.MaterialCardView>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/samsungSwipeTargetGuideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.42" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/samsungActionsBarrier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="top"
+                app:constraint_referenced_ids="samsungDeclineButton,samsungAnswerButton" />
+
+            <View
+                android:id="@+id/samsungDeclineAura"
+                android:layout_width="@dimen/samsung_call_aura_size"
+                android:layout_height="@dimen/samsung_call_aura_size"
+                android:alpha="0.15"
+                android:background="@drawable/bg_samsung_aura_decline"
+                android:elevation="2dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/samsungDeclineButton"
+                app:layout_constraintEnd_toEndOf="@id/samsungDeclineButton"
+                app:layout_constraintStart_toStartOf="@id/samsungDeclineButton"
+                app:layout_constraintTop_toTopOf="@id/samsungDeclineButton" />
+
+            <View
+                android:id="@+id/samsungDeclineRipple2"
+                android:layout_width="@dimen/samsung_ripple_ring_base"
+                android:layout_height="@dimen/samsung_ripple_ring_base"
+                android:background="@drawable/bg_samsung_pulse_ring_decline"
+                android:elevation="3dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/samsungDeclineButton"
+                app:layout_constraintEnd_toEndOf="@id/samsungDeclineButton"
+                app:layout_constraintStart_toStartOf="@id/samsungDeclineButton"
+                app:layout_constraintTop_toTopOf="@id/samsungDeclineButton" />
+
+            <View
+                android:id="@+id/samsungDeclineRipple1"
+                android:layout_width="@dimen/samsung_ripple_ring_base"
+                android:layout_height="@dimen/samsung_ripple_ring_base"
+                android:background="@drawable/bg_samsung_pulse_ring_decline"
+                android:elevation="4dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/samsungDeclineButton"
+                app:layout_constraintEnd_toEndOf="@id/samsungDeclineButton"
+                app:layout_constraintStart_toStartOf="@id/samsungDeclineButton"
+                app:layout_constraintTop_toTopOf="@id/samsungDeclineButton" />
+
+            <View
+                android:id="@+id/samsungAnswerAura"
+                android:layout_width="@dimen/samsung_call_aura_size"
+                android:layout_height="@dimen/samsung_call_aura_size"
+                android:alpha="0.15"
+                android:background="@drawable/bg_samsung_aura_answer"
+                android:elevation="2dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/samsungAnswerButton"
+                app:layout_constraintEnd_toEndOf="@id/samsungAnswerButton"
+                app:layout_constraintStart_toStartOf="@id/samsungAnswerButton"
+                app:layout_constraintTop_toTopOf="@id/samsungAnswerButton" />
+
+            <View
+                android:id="@+id/samsungAnswerRipple2"
+                android:layout_width="@dimen/samsung_ripple_ring_base"
+                android:layout_height="@dimen/samsung_ripple_ring_base"
+                android:background="@drawable/bg_samsung_pulse_ring_answer"
+                android:elevation="3dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/samsungAnswerButton"
+                app:layout_constraintEnd_toEndOf="@id/samsungAnswerButton"
+                app:layout_constraintStart_toStartOf="@id/samsungAnswerButton"
+                app:layout_constraintTop_toTopOf="@id/samsungAnswerButton" />
+
+            <View
+                android:id="@+id/samsungAnswerRipple1"
+                android:layout_width="@dimen/samsung_ripple_ring_base"
+                android:layout_height="@dimen/samsung_ripple_ring_base"
+                android:background="@drawable/bg_samsung_pulse_ring_answer"
+                android:elevation="4dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/samsungAnswerButton"
+                app:layout_constraintEnd_toEndOf="@id/samsungAnswerButton"
+                app:layout_constraintStart_toStartOf="@id/samsungAnswerButton"
+                app:layout_constraintTop_toTopOf="@id/samsungAnswerButton" />
+
+            <View
+                android:id="@+id/samsungDeclineSwipeGlow"
+                android:layout_width="@dimen/samsung_decline_btn_size"
+                android:layout_height="@dimen/samsung_decline_btn_size"
+                android:alpha="0"
+                android:background="@drawable/bg_samsung_swipe_glow_red"
+                android:elevation="8dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/samsungDeclineButton"
+                app:layout_constraintEnd_toEndOf="@id/samsungDeclineButton"
+                app:layout_constraintStart_toStartOf="@id/samsungDeclineButton"
+                app:layout_constraintTop_toTopOf="@id/samsungDeclineButton" />
+
+            <View
+                android:id="@+id/samsungAnswerSwipeGlow"
+                android:layout_width="@dimen/samsung_pickup_answer_size"
+                android:layout_height="@dimen/samsung_pickup_answer_size"
+                android:alpha="0"
+                android:background="@drawable/bg_samsung_swipe_glow_green"
+                android:elevation="8dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/samsungAnswerButton"
+                app:layout_constraintEnd_toEndOf="@id/samsungAnswerButton"
+                app:layout_constraintStart_toStartOf="@id/samsungAnswerButton"
+                app:layout_constraintTop_toTopOf="@id/samsungAnswerButton" />
+
+            <dev.arpan.calling.AccessibleTouchFrameLayout
+                android:id="@+id/samsungAnswerButton"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_samsung_answer_action_circle"
+                android:clickable="true"
+                android:contentDescription="@string/fake_call_answer"
+                android:elevation="10dp"
+                android:focusable="true"
+                app:layout_constraintBottom_toTopOf="@id/samsungSendMessagePill"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/fake_call_answer"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_call_answer"
+                    app:tint="@color/white" />
+            </dev.arpan.calling.AccessibleTouchFrameLayout>
+
+            <dev.arpan.calling.AccessibleTouchFrameLayout
+                android:id="@+id/samsungDeclineButton"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginEnd="48dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_samsung_decline_action_circle"
+                android:clickable="true"
+                android:contentDescription="@string/fake_call_decline"
+                android:elevation="10dp"
+                android:focusable="true"
+                app:layout_constraintBottom_toBottomOf="@id/samsungAnswerButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/samsungAnswerButton">
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@null"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_call_decline"
+                    app:tint="@color/white" />
+            </dev.arpan.calling.AccessibleTouchFrameLayout>
+
+            <View
+                android:id="@+id/samsungSendMessagePill"
+                android:layout_width="40dp"
+                android:layout_height="3dp"
+                android:layout_marginBottom="6dp"
+                android:background="@drawable/bg_samsung_send_message_pill"
+                app:layout_constraintBottom_toTopOf="@id/samsungSendMessage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/samsungSendMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@string/fake_call_samsung_send_message"
+                android:textColor="#CCFFFFFF"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toTopOf="@id/samsungHomeBar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <View
+                android:id="@+id/samsungHomeBar"
+                android:layout_width="@dimen/call_home_bar_width"
+                android:layout_height="@dimen/call_home_bar_height"
+                android:layout_marginBottom="@dimen/call_home_bar_bottom_margin"
+                android:background="@color/call_home_bar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <View
+                android:id="@+id/samsungRejectSuccessFlash"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:alpha="0"
+                android:background="#E8FF3B30"
+                android:clickable="true"
+                android:elevation="32dp"
+                android:focusable="true"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/samsungAnswerSuccessFlash"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:alpha="0"
+                android:background="#F034C759"
+                android:clickable="true"
+                android:elevation="32dp"
+                android:focusable="true"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- OnePlus Oxygen-style incoming (black UI, vertical slide answer) -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/incomingOnePlusPane"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/onePlusCallFrom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/oneplus_name_top_margin"
+                android:text="@string/fake_call_oneplus_call_from"
+                android:textColor="#99FFFFFF"
+                android:textSize="13sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/onePlusCallerName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="32dp"
+                android:layout_marginTop="12dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="2"
+                android:textColor="@color/white"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/onePlusCallFrom"
+                tools:text="Mom" />
+
+            <TextView
+                android:id="@+id/onePlusNumberLine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/fake_call_oneplus_number_placeholder"
+                android:textColor="#99FFFFFF"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/onePlusCallerName" />
+
+            <LinearLayout
+                android:id="@+id/onePlusReplyPill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/bg_oneplus_reply_pill"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="18dp"
+                android:paddingVertical="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/onePlusNumberLine">
+
+                <View
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:background="@drawable/bg_oneplus_reply_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/fake_call_oneplus_reply"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/onePlusSlideUpHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:text="@string/fake_call_oneplus_slide_up"
+                android:textColor="#CCFFFFFF"
+                android:textSize="13sp"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toTopOf="@id/onePlusAnswerKnob"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <dev.arpan.calling.AccessibleTouchMaterialCardView
+                android:id="@+id/onePlusAnswerKnob"
+                android:layout_width="@dimen/oneplus_answer_knob_size"
+                android:layout_height="@dimen/oneplus_answer_knob_size"
+                android:layout_marginBottom="12dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="@color/oneplus_answer_green"
+                app:cardCornerRadius="@dimen/oneplus_answer_knob_radius"
+                app:cardElevation="10dp"
+                app:layout_constraintBottom_toTopOf="@id/onePlusSlideDownHint"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:strokeWidth="0dp">
+
+                <ImageView
+                    android:layout_width="@dimen/oneplus_answer_icon_size"
+                    android:layout_height="@dimen/oneplus_answer_icon_size"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/fake_call_answer"
+                    android:src="@drawable/ic_call_answer"
+                    app:tint="@color/white" />
+            </dev.arpan.calling.AccessibleTouchMaterialCardView>
+
+            <TextView
+                android:id="@+id/onePlusSlideDownHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="@string/fake_call_oneplus_slide_down"
+                android:textColor="#CCFFFFFF"
+                android:textSize="13sp"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toTopOf="@id/onePlusHomeBar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <View
+                android:id="@+id/onePlusHomeBar"
+                android:layout_width="@dimen/call_home_bar_width"
+                android:layout_height="@dimen/call_home_bar_height"
+                android:layout_marginBottom="@dimen/call_home_bar_bottom_margin"
+                android:background="@color/call_home_bar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
 </FrameLayout>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Spacing -->
+    <dimen name="call_top_margin">52dp</dimen>
+    <dimen name="call_top_margin_compact">36dp</dimen>
+    <dimen name="call_label_top_margin">10dp</dimen>
+    <dimen name="call_name_horizontal_margin">32dp</dimen>
+    <dimen name="call_number_top_margin">6dp</dimen>
+    <dimen name="call_avatar_top_margin">36dp</dimen>
+    <dimen name="call_avatar_top_margin_compact">22dp</dimen>
+    <dimen name="call_timer_top_margin">14dp</dimen>
+    <dimen name="call_controls_top_margin">52dp</dimen>
+    <dimen name="call_controls_top_margin_compact">40dp</dimen>
+    <dimen name="call_controls_row2_top_margin">28dp</dimen>
+    <dimen name="call_controls_side_margin">36dp</dimen>
+    <dimen name="call_end_btn_bottom_margin">52dp</dimen>
+    <dimen name="call_action_btn_bottom_margin">12dp</dimen>
+    <dimen name="call_btn_gap">56dp</dimen>
+
+    <!-- Button sizes -->
+    <dimen name="call_main_btn_size">76dp</dimen>
+    <dimen name="call_main_btn_radius">38dp</dimen>
+    <dimen name="call_main_icon_size">34dp</dimen>
+    <dimen name="call_ctrl_btn_size">64dp</dimen>
+    <dimen name="call_ctrl_btn_radius">32dp</dimen>
+    <dimen name="call_ctrl_icon_size">28dp</dimen>
+
+    <!-- Main screen: small preview next to gallery button -->
+    <dimen name="main_caller_preview_padding">10dp</dimen>
+    <dimen name="main_photo_voice_avatar">88dp</dimen>
+    <dimen name="main_photo_voice_avatar_radius">44dp</dimen>
+
+    <!-- Avatar -->
+    <dimen name="call_avatar_size">112dp</dimen>
+    <dimen name="call_avatar_size_compact">88dp</dimen>
+    <dimen name="call_avatar_radius">56dp</dimen>
+    <dimen name="call_avatar_stroke">1.5dp</dimen>
+    <dimen name="call_avatar_padding">20dp</dimen>
+
+    <!-- Dots -->
+    <dimen name="call_dot_size">6dp</dimen>
+    <dimen name="call_dot_margin">3dp</dimen>
+    <dimen name="call_dot_above_btn_margin">8dp</dimen>
+
+    <!-- Typography -->
+    <dimen name="call_text_name">32sp</dimen>
+    <dimen name="call_text_name_compact">27sp</dimen>
+    <dimen name="call_text_number">15sp</dimen>
+    <dimen name="call_text_label">12sp</dimen>
+    <dimen name="call_text_timer">16sp</dimen>
+    <dimen name="call_text_ctrl_label">11sp</dimen>
+    <dimen name="call_text_ctrl_label_margin_top">8dp</dimen>
+
+    <!-- Home bar -->
+    <dimen name="call_home_bar_width">120dp</dimen>
+    <dimen name="call_home_bar_height">4dp</dimen>
+    <dimen name="call_home_bar_bottom_margin">10dp</dimen>
+
+    <!-- Samsung-style incoming call -->
+    <dimen name="samsung_incoming_top_margin">56dp</dimen>
+    <dimen name="samsung_incoming_top_margin_compact">44dp</dimen>
+    <dimen name="samsung_call_action_btn">80dp</dimen>
+    <dimen name="samsung_call_action_btn_radius">40dp</dimen>
+    <dimen name="samsung_call_action_icon">36dp</dimen>
+    <!-- Samsung incoming: circular answer (left) and decline (right), matched size -->
+    <dimen name="samsung_pickup_answer_size">56dp</dimen>
+    <dimen name="samsung_pickup_icon_size">26dp</dimen>
+    <dimen name="samsung_decline_btn_size">56dp</dimen>
+    <dimen name="samsung_decline_icon_size">26dp</dimen>
+    <dimen name="samsung_incoming_avatar_size">120dp</dimen>
+    <dimen name="samsung_caller_name_sp">34sp</dimen>
+    <dimen name="samsung_caller_name_sp_compact">30sp</dimen>
+    <dimen name="samsung_call_aura_size">220dp</dimen>
+    <dimen name="samsung_swipe_glow_max_dp">250dp</dimen>
+    <dimen name="samsung_ripple_ring_base">100dp</dimen>
+
+    <!-- OnePlus incoming -->
+    <dimen name="oneplus_answer_knob_size">80dp</dimen>
+    <dimen name="oneplus_answer_knob_radius">40dp</dimen>
+    <dimen name="oneplus_answer_icon_size">38dp</dimen>
+    <dimen name="oneplus_name_top_margin">72dp</dimen>
+    <dimen name="oneplus_name_top_margin_compact">56dp</dimen>
+
+</resources>

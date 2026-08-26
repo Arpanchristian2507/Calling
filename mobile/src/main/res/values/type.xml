@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Serif for display = editorial / less “default UI” feel; body stays sans in theme -->
+    <style name="TextAppearance.Calling.SerifTitle" parent="TextAppearance.Material3.HeadlineMedium">
+        <item name="android:fontFamily">serif</item>
+        <item name="fontFamily">serif</item>
+        <item name="android:letterSpacing">-0.02</item>
+    </style>
+    <style name="TextAppearance.Calling.SerifLarge" parent="TextAppearance.Material3.HeadlineLarge">
+        <item name="android:fontFamily">serif</item>
+        <item name="fontFamily">serif</item>
+        <item name="android:letterSpacing">-0.03</item>
+    </style>
+    <style name="TextAppearance.Calling.UiSans" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="fontFamily">sans-serif-medium</item>
+    </style>
+</resources>

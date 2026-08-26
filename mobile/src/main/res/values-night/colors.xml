@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark surfaces — same green accent -->
+    <color name="calling_background">#FF0A0D07</color>
+    <color name="calling_surface">#FF12180E</color>
+    <color name="calling_surface_variant">#FF1A2314</color>
+    <color name="calling_on_background">#FFF2F6EC</color>
+    <color name="calling_on_surface">#FFE8EDDF</color>
+    <color name="calling_on_surface_variant">#FFB4C4A8</color>
+    <color name="calling_outline">#FF3D4A32</color>
+    <color name="calling_outline_variant">#FF2A3525</color>
+    <color name="calling_accent_muted">#FF9CB87A</color>
+</resources>

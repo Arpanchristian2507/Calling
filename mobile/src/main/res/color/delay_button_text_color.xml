@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Checked: M3 uses a dark brown/green tonal fill — use light “on container” text -->
+    <item android:color="@color/calling_on_secondary_container" android:state_checked="true" />
+    <item android:color="@color/calling_on_surface" />
+</selector>

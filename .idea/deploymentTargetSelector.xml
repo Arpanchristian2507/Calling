@@ -4,7 +4,7 @@
     <selectionStates>
       <SelectionState runConfigName="wear">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2026-06-04T03:22:55.939328Z">
+        <DropdownSelection timestamp="2026-06-10T01:25:08.029897Z">
           <Target type="DEFAULT_BOOT">
             <handle>
               <DeviceId pluginId="LocalEmulator" identifier="path=/Users/arpanchristian/.android/avd/Resizable_Experimental.avd" />
@@ -15,10 +15,10 @@
       </SelectionState>
       <SelectionState runConfigName="mobile">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2026-05-07T23:38:00.842430Z">
+        <DropdownSelection timestamp="2026-06-10T01:25:13.112518Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="PhysicalDevice" identifier="serial=RFAX51NW12A" />
+              <DeviceId pluginId="LocalEmulator" identifier="path=/Users/arpanchristian/.android/avd/Resizable_Experimental.avd" />
             </handle>
           </Target>
         </DropdownSelection>

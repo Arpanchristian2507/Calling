@@ -26,6 +26,20 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".CallThemesActivity"
+            android:exported="false"
+            android:label="@string/themes_screen_title"
+            android:parentActivityName=".SettingsActivity" />
+
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ScheduleActivity"
+            android:exported="false" />
+
         <!-- Full-screen fake incoming call UI (see activity_fake_incoming_call.xml + Theme.Calling.FullScreenCall.Incoming) -->
         <activity
             android:name=".FakeIncomingCallActivity"

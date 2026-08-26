@@ -1,340 +1,623 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/calling_background"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="24dp">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-medium"
-            android:text="@string/phone_eyebrow"
-            android:textAllCaps="true"
-            android:textColor="@color/calling_accent_muted"
-            android:textSize="12sp"
-            android:textStyle="bold" />
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:fontFamily="serif"
-            android:text="@string/phone_title"
-            android:textColor="@color/calling_on_background"
-            android:textSize="28sp"
-            android:textStyle="bold" />
+            android:orientation="vertical"
+            android:padding="24dp">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:fontFamily="sans-serif-medium"
-            android:text="@string/phone_subtitle"
-            android:textColor="@color/calling_on_surface_variant"
-            android:textSize="15sp" />
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            app:cardBackgroundColor="@color/calling_surface_variant"
-            app:cardCornerRadius="28dp"
-            app:cardElevation="0dp"
-            app:strokeColor="@color/calling_outline"
-            app:strokeWidth="1dp">
-
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp">
+                android:fontFamily="serif"
+                android:text="@string/phone_header_calling"
+                android:textColor="@color/calling_on_background"
+                android:textSize="32sp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="@string/phone_caller_label"
-                    android:textColor="@color/calling_on_surface"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/phone_subtitle_compact"
+                android:textColor="@color/calling_on_surface_variant"
+                android:textSize="14sp" />
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:hint="@string/phone_caller_hint"
-                    app:boxBackgroundColor="@color/calling_surface"
-                    app:boxBackgroundMode="filled"
-                    app:boxCornerRadiusBottomEnd="18dp"
-                    app:boxCornerRadiusBottomStart="18dp"
-                    app:boxCornerRadiusTopEnd="18dp"
-                    app:boxCornerRadiusTopStart="18dp"
-                    app:hintTextColor="@color/calling_on_surface_variant">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/callerNameInput"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:fontFamily="sans-serif-medium"
-                        android:inputType="textCapWords"
-                        android:maxLines="1"
-                        android:text="@string/phone_default_caller"
-                        android:textColorHint="@color/calling_on_surface_variant" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="@string/phone_caller_photo_label"
-                    android:textColor="@color/calling_on_surface"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:cardBackgroundColor="@color/calling_surface_variant"
+                app:cardCornerRadius="28dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/calling_outline"
+                app:strokeWidth="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="56dp"
-                        android:layout_height="56dp"
-                        app:cardBackgroundColor="@color/calling_surface"
-                        app:cardCornerRadius="28dp"
-                        app:cardElevation="0dp"
-                        app:strokeColor="@color/calling_outline"
-                        app:strokeWidth="1dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="@string/phone_caller_label"
+                        android:textColor="@color/calling_on_surface"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
 
-                        <ImageView
-                            android:id="@+id/callerPhotoPreview"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:hint="@string/phone_caller_hint"
+                        app:boxBackgroundColor="@color/calling_surface"
+                        app:boxBackgroundMode="filled"
+                        app:boxCornerRadiusBottomEnd="18dp"
+                        app:boxCornerRadiusBottomStart="18dp"
+                        app:boxCornerRadiusTopEnd="18dp"
+                        app:boxCornerRadiusTopStart="18dp"
+                        app:hintTextColor="@color/calling_on_surface_variant">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/callerNameInput"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:contentDescription="@string/content_desc_caller_avatar"
-                            android:padding="@dimen/main_caller_preview_padding"
-                            android:scaleType="fitCenter"
-                            android:src="@drawable/ic_person_outline"
-                            app:tint="@color/calling_on_surface_variant" />
-                    </com.google.android.material.card.MaterialCardView>
+                            android:fontFamily="sans-serif-medium"
+                            android:inputType="textCapWords"
+                            android:maxLines="1"
+                            android:text="@string/phone_default_caller"
+                            android:textColorHint="@color/calling_on_surface_variant" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
+                        android:layout_marginTop="20dp"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal">
+
+                        <!-- Caller photo column -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="4dp"
+                                android:fontFamily="sans-serif-medium"
+                                android:gravity="center_horizontal"
+                                android:minHeight="36dp"
+                                android:text="@string/phone_caller_photo_label"
+                                android:textAlignment="center"
+                                android:textColor="@color/calling_on_surface"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <FrameLayout
+                                android:layout_width="@dimen/main_photo_voice_avatar"
+                                android:layout_height="@dimen/main_photo_voice_avatar"
+                                android:layout_marginTop="8dp">
+
+                                <com.google.android.material.card.MaterialCardView
+                                    android:id="@+id/callerPhotoCard"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    app:cardBackgroundColor="@color/calling_surface"
+                                    app:cardCornerRadius="@dimen/main_photo_voice_avatar_radius"
+                                    app:cardElevation="0dp"
+                                    app:strokeColor="@color/calling_outline"
+                                    app:strokeWidth="1dp">
+
+                                    <ImageView
+                                        android:id="@+id/callerPhotoPreview"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:contentDescription="@string/content_desc_caller_avatar"
+                                        android:padding="@dimen/main_caller_preview_padding"
+                                        android:scaleType="fitCenter"
+                                        android:src="@drawable/ic_person_outline"
+                                        app:tint="@color/calling_on_surface_variant" />
+                                </com.google.android.material.card.MaterialCardView>
+
+                                <TextView
+                                    android:id="@+id/callerPhotoPlus"
+                                    android:layout_width="26dp"
+                                    android:layout_height="26dp"
+                                    android:layout_gravity="bottom|end"
+                                    android:layout_marginEnd="2dp"
+                                    android:layout_marginBottom="2dp"
+                                    android:background="@drawable/bg_circle_overlay_badge"
+                                    android:gravity="center"
+                                    android:text="+"
+                                    android:textColor="@color/calling_on_surface"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/callerPhotoMinus"
+                                    android:layout_width="26dp"
+                                    android:layout_height="26dp"
+                                    android:layout_gravity="top|end"
+                                    android:layout_marginTop="2dp"
+                                    android:layout_marginEnd="2dp"
+                                    android:background="@drawable/bg_circle_overlay_badge"
+                                    android:gravity="center"
+                                    android:text="−"
+                                    android:textColor="@color/calling_on_surface"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold"
+                                    android:visibility="gone" />
+                            </FrameLayout>
+                        </LinearLayout>
+
+                        <!-- Caller voice column -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="4dp"
+                                android:fontFamily="sans-serif-medium"
+                                android:gravity="center_horizontal"
+                                android:minHeight="36dp"
+                                android:text="@string/phone_caller_voice_label"
+                                android:textAlignment="center"
+                                android:textColor="@color/calling_on_surface"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <FrameLayout
+                                android:layout_width="@dimen/main_photo_voice_avatar"
+                                android:layout_height="@dimen/main_photo_voice_avatar"
+                                android:layout_marginTop="8dp">
+
+                                <com.google.android.material.card.MaterialCardView
+                                    android:id="@+id/callerVoiceCard"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    app:cardBackgroundColor="@color/calling_surface"
+                                    app:cardCornerRadius="@dimen/main_photo_voice_avatar_radius"
+                                    app:cardElevation="0dp"
+                                    app:strokeColor="@color/calling_outline"
+                                    app:strokeWidth="1dp">
+
+                                    <ImageView
+                                        android:id="@+id/callerVoiceIcon"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:contentDescription="@string/content_desc_caller_voice"
+                                        android:padding="18dp"
+                                        android:scaleType="fitCenter"
+                                        android:src="@drawable/ic_audio_wave"
+                                        app:tint="@color/calling_on_surface_variant" />
+                                </com.google.android.material.card.MaterialCardView>
+
+                                <TextView
+                                    android:id="@+id/callerVoicePlus"
+                                    android:layout_width="26dp"
+                                    android:layout_height="26dp"
+                                    android:layout_gravity="bottom|end"
+                                    android:layout_marginEnd="2dp"
+                                    android:layout_marginBottom="2dp"
+                                    android:background="@drawable/bg_circle_overlay_badge"
+                                    android:gravity="center"
+                                    android:text="+"
+                                    android:textColor="@color/calling_on_surface"
+                                    android:textSize="16sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/callerVoiceMinus"
+                                    android:layout_width="26dp"
+                                    android:layout_height="26dp"
+                                    android:layout_gravity="top|end"
+                                    android:layout_marginTop="2dp"
+                                    android:layout_marginEnd="2dp"
+                                    android:background="@drawable/bg_circle_overlay_badge"
+                                    android:gravity="center"
+                                    android:text="−"
+                                    android:textColor="@color/calling_on_surface"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold"
+                                    android:visibility="gone" />
+                            </FrameLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="@string/phone_delay_label"
+                        android:textColor="@color/calling_on_surface"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:weightSum="4">
 
                         <com.google.android.material.button.MaterialButton
-                            android:id="@+id/chooseCallerPhoto"
+                            android:id="@+id/delayInstant"
                             style="@style/Widget.Material3.Button.OutlinedButton"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginEnd="2dp"
+                            android:layout_weight="1"
+                            android:autoSizeMaxTextSize="16sp"
+                            android:autoSizeMinTextSize="8sp"
+                            android:autoSizeStepGranularity="1sp"
+                            android:autoSizeTextType="uniform"
+                            android:checkable="true"
+                            android:ellipsize="end"
                             android:fontFamily="sans-serif-medium"
                             android:insetTop="0dp"
                             android:insetBottom="0dp"
-                            android:minHeight="48dp"
-                            android:text="@string/phone_choose_caller_photo"
+                            android:maxLines="1"
+                            android:minHeight="52dp"
+                            android:text="@string/phone_delay_instant"
                             android:textColor="@color/delay_button_text_color"
                             app:strokeColor="@color/delay_button_stroke_color" />
 
                         <com.google.android.material.button.MaterialButton
-                            android:id="@+id/clearCallerPhoto"
-                            style="@style/Widget.Material3.Button.TextButton"
-                            android:layout_width="wrap_content"
+                            android:id="@+id/delay5s"
+                            style="@style/Widget.Material3.Button.OutlinedButton"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="4dp"
+                            android:layout_weight="1"
+                            android:autoSizeMaxTextSize="16sp"
+                            android:autoSizeMinTextSize="8sp"
+                            android:autoSizeStepGranularity="1sp"
+                            android:autoSizeTextType="uniform"
+                            android:checkable="true"
+                            android:ellipsize="end"
                             android:fontFamily="sans-serif-medium"
-                            android:text="@string/phone_clear_caller_photo"
-                            android:visibility="gone" />
-                    </LinearLayout>
-                </LinearLayout>
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:maxLines="1"
+                            android:minHeight="52dp"
+                            android:text="@string/phone_delay_5"
+                            android:textColor="@color/delay_button_text_color"
+                            app:strokeColor="@color/delay_button_stroke_color" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="@string/phone_delay_label"
-                    android:textColor="@color/calling_on_surface"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/delay15s"
+                            style="@style/Widget.Material3.Button.OutlinedButton"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="4dp"
+                            android:layout_weight="1"
+                            android:autoSizeMaxTextSize="16sp"
+                            android:autoSizeMinTextSize="8sp"
+                            android:autoSizeStepGranularity="1sp"
+                            android:autoSizeTextType="uniform"
+                            android:checkable="true"
+                            android:ellipsize="end"
+                            android:fontFamily="sans-serif-medium"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:maxLines="1"
+                            android:minHeight="52dp"
+                            android:text="@string/phone_delay_15"
+                            android:textColor="@color/delay_button_text_color"
+                            app:strokeColor="@color/delay_button_stroke_color" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/delay30s"
+                            style="@style/Widget.Material3.Button.OutlinedButton"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="2dp"
+                            android:layout_weight="1"
+                            android:autoSizeMaxTextSize="16sp"
+                            android:autoSizeMinTextSize="8sp"
+                            android:autoSizeStepGranularity="1sp"
+                            android:autoSizeTextType="uniform"
+                            android:checkable="true"
+                            android:ellipsize="end"
+                            android:fontFamily="sans-serif-medium"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:maxLines="1"
+                            android:minHeight="52dp"
+                            android:text="@string/phone_delay_30"
+                            android:textColor="@color/delay_button_text_color"
+                            app:strokeColor="@color/delay_button_stroke_color" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:weightSum="4">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/delay1m"
+                            style="@style/Widget.Material3.Button.OutlinedButton"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="2dp"
+                            android:layout_weight="1"
+                            android:autoSizeMaxTextSize="16sp"
+                            android:autoSizeMinTextSize="8sp"
+                            android:autoSizeStepGranularity="1sp"
+                            android:autoSizeTextType="uniform"
+                            android:checkable="true"
+                            android:ellipsize="end"
+                            android:fontFamily="sans-serif-medium"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:maxLines="1"
+                            android:minHeight="52dp"
+                            android:text="@string/phone_delay_1m"
+                            android:textColor="@color/delay_button_text_color"
+                            app:strokeColor="@color/delay_button_stroke_color" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/delay5m"
+                            style="@style/Widget.Material3.Button.OutlinedButton"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="4dp"
+                            android:layout_weight="1"
+                            android:autoSizeMaxTextSize="16sp"
+                            android:autoSizeMinTextSize="8sp"
+                            android:autoSizeStepGranularity="1sp"
+                            android:autoSizeTextType="uniform"
+                            android:checkable="true"
+                            android:ellipsize="end"
+                            android:fontFamily="sans-serif-medium"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:maxLines="1"
+                            android:minHeight="52dp"
+                            android:text="@string/phone_delay_5m"
+                            android:textColor="@color/delay_button_text_color"
+                            app:strokeColor="@color/delay_button_stroke_color" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/delay10m"
+                            style="@style/Widget.Material3.Button.OutlinedButton"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="4dp"
+                            android:layout_weight="1"
+                            android:autoSizeMaxTextSize="16sp"
+                            android:autoSizeMinTextSize="8sp"
+                            android:autoSizeStepGranularity="1sp"
+                            android:autoSizeTextType="uniform"
+                            android:checkable="true"
+                            android:ellipsize="end"
+                            android:fontFamily="sans-serif-medium"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:maxLines="1"
+                            android:minHeight="52dp"
+                            android:text="@string/phone_delay_10m"
+                            android:textColor="@color/delay_button_text_color"
+                            app:strokeColor="@color/delay_button_stroke_color" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/delayPickTime"
+                            style="@style/Widget.Material3.Button.OutlinedButton"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="2dp"
+                            android:layout_weight="1"
+                            android:checkable="true"
+                            android:contentDescription="@string/phone_delay_pick_time_desc"
+                            android:fontFamily="sans-serif-medium"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:maxLines="1"
+                            android:minHeight="52dp"
+                            android:textColor="@color/delay_button_text_color"
+                            app:icon="@drawable/ic_schedule_time"
+                            app:iconGravity="textStart"
+                            app:iconPadding="0dp"
+                            app:iconSize="22dp"
+                            app:iconTint="@color/delay_button_text_color"
+                            app:strokeColor="@color/delay_button_stroke_color" />
+                    </LinearLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/cancelScheduled"
+                        style="@style/Widget.Material3.Button.TextButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="@string/phone_cancel_button" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardBackgroundColor="@color/calling_surface"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/calling_outline"
+                app:strokeWidth="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:weightSum="4">
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/delayInstant"
-                        style="@style/Widget.Material3.Button.OutlinedButton"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="2dp"
-                        android:layout_weight="1"
-                        android:checkable="true"
-                        android:fontFamily="sans-serif-medium"
-                        android:insetTop="0dp"
-                        android:insetBottom="0dp"
-                        android:minHeight="52dp"
-                        app:strokeColor="@color/delay_button_stroke_color"
-                        android:text="@string/phone_delay_instant"
-                        android:textColor="@color/delay_button_text_color"
-                        android:maxLines="1"
-                        android:ellipsize="end"
-                        android:autoSizeTextType="uniform"
-                        android:autoSizeMinTextSize="8sp"
-                        android:autoSizeMaxTextSize="16sp"
-                        android:autoSizeStepGranularity="1sp"
-                        />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/delay5s"
-                        style="@style/Widget.Material3.Button.OutlinedButton"
-                        android:layout_width="0dp"
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="4dp"
-                        android:layout_weight="1"
-                        android:checkable="true"
                         android:fontFamily="sans-serif-medium"
-                        android:insetTop="0dp"
-                        android:insetBottom="0dp"
-                        android:minHeight="52dp"
-                        app:strokeColor="@color/delay_button_stroke_color"
-                        android:text="@string/phone_delay_5"
-                        android:textColor="@color/delay_button_text_color"
-                        android:maxLines="1"
-                        android:ellipsize="end"
-                        android:autoSizeTextType="uniform"
-                        android:autoSizeMinTextSize="8sp"
-                        android:autoSizeMaxTextSize="16sp"
-                        android:autoSizeStepGranularity="1sp"/>
+                        android:text="@string/phone_scheduled_label"
+                        android:textColor="@color/calling_accent_muted"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/delay15s"
-                        style="@style/Widget.Material3.Button.OutlinedButton"
-                        android:layout_width="0dp"
+                    <TextView
+                        android:id="@+id/scheduledStatus"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="4dp"
-                        android:layout_weight="1"
-                        android:checkable="true"
+                        android:layout_marginTop="8dp"
                         android:fontFamily="sans-serif-medium"
-                        android:insetTop="0dp"
-                        android:insetBottom="0dp"
-                        android:minHeight="52dp"
-                        app:strokeColor="@color/delay_button_stroke_color"
-                        android:text="@string/phone_delay_15"
-                        android:textColor="@color/delay_button_text_color"
-                        android:maxLines="1"
-                        android:ellipsize="end"
-                        android:autoSizeTextType="uniform"
-                        android:autoSizeMinTextSize="8sp"
-                        android:autoSizeMaxTextSize="16sp"
-                        android:autoSizeStepGranularity="1sp"/>
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/delay30s"
-                        style="@style/Widget.Material3.Button.OutlinedButton"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_weight="1"
-                        android:checkable="true"
-                        android:fontFamily="sans-serif-medium"
-                        android:insetTop="0dp"
-                        android:insetBottom="0dp"
-                        android:minHeight="52dp"
-                        app:strokeColor="@color/delay_button_stroke_color"
-                        android:text="@string/phone_delay_30"
-                        android:textColor="@color/delay_button_text_color"
-                        android:maxLines="1"
-                        android:ellipsize="end"
-                        android:autoSizeTextType="uniform"
-                        android:autoSizeMinTextSize="8sp"
-                        android:autoSizeMaxTextSize="16sp"
-                        android:autoSizeStepGranularity="1sp"/>
+                        android:text="@string/phone_scheduled_none"
+                        android:textColor="@color/calling_on_surface"
+                        android:textSize="16sp"
+                        tools:text="Next fake call: Alex Morgan at 9:41 PM" />
                 </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/triggerNow"
-                    style="@style/Widget.Material3.Button"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:minHeight="56dp"
-                    android:text="@string/phone_trigger_button" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/cancelScheduled"
-                    style="@style/Widget.Material3.Button.TextButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="@string/phone_cancel_button" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:cardBackgroundColor="@color/calling_surface"
-            app:cardCornerRadius="24dp"
-            app:cardElevation="0dp"
-            app:strokeColor="@color/calling_outline"
-            app:strokeWidth="1dp">
-
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp">
+                android:layout_marginTop="20dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/phone_watch_hint"
+                android:textColor="@color/calling_on_surface_variant"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="@string/phone_scheduled_label"
-                    android:textColor="@color/calling_accent_muted"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/calling_outline" />
 
-                <TextView
-                    android:id="@+id/scheduledStatus"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="@string/phone_scheduled_none"
-                    android:textColor="@color/calling_on_surface"
-                    android:textSize="16sp"
-                    tools:text="Next fake call: Alex Morgan at 9:41 PM" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/calling_surface"
+        android:orientation="horizontal"
+        android:paddingTop="8dp"
+        android:paddingBottom="12dp">
 
-        <TextView
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/bottomNavCall"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fontFamily="sans-serif-medium"
-            android:text="@string/phone_watch_hint"
-            android:textColor="@color/calling_on_surface_variant"
-            android:textSize="14sp" />
-    </LinearLayout>
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingVertical="4dp">
 
-</androidx.core.widget.NestedScrollView>
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:contentDescription="@string/phone_nav_call"
+                android:src="@drawable/ic_call_answer"
+                app:tint="@color/calling_primary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/phone_nav_call"
+                android:textColor="@color/calling_on_surface"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bottomNavSchedule"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingVertical="4dp">
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:contentDescription="@string/phone_nav_schedule"
+                android:src="@drawable/ic_schedule_time"
+                app:tint="@color/calling_on_surface_variant" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/phone_nav_schedule"
+                android:textColor="@color/calling_on_surface_variant"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bottomNavSettings"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingVertical="4dp">
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:contentDescription="@string/phone_nav_settings"
+                android:src="@drawable/ic_settings_outline"
+                app:tint="@color/calling_on_surface_variant" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/phone_nav_settings"
+                android:textColor="@color/calling_on_surface_variant"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -4,6 +4,21 @@
     <string name="fake_call_channel_name">Incoming calls</string>
     <string name="fake_call_incoming_label">Incoming call</string>
     <string name="fake_call_subtitle">Mobile · Slide to focus</string>
+    <string name="fake_call_subtitle_slide">Swipe right to answer</string>
+    <string name="fake_call_samsung_hd_badge">HD</string>
+    <string name="fake_call_samsung_sim_slot_label">1</string>
+    <string name="fake_call_samsung_incoming_title">Incoming call</string>
+    <string name="fake_call_samsung_subtitle">Mobile 123456789 · Drag a button away to answer or decline</string>
+    <string name="fake_call_samsung_send_message">Send message</string>
+    <string name="fake_call_samsung_send_message_stub">Send message is not available for fake calls.</string>
+    <string name="fake_call_oneplus_call_from">Call From</string>
+    <string name="fake_call_oneplus_number_placeholder">Mobile · · · ·</string>
+    <string name="fake_call_oneplus_reply">Reply</string>
+    <string name="fake_call_oneplus_slide_up">Slide up to answer</string>
+    <string name="fake_call_oneplus_slide_down">Slide down to reject</string>
+    <string name="fake_call_oneplus_reply_stub">Quick reply is not available for fake calls.</string>
+    <string name="fake_call_slide_hint">Slide to answer</string>
+    <string name="fake_call_slide_accessibility">Slide right to answer call</string>
     <string name="fake_call_connected_label">Call picked up</string>
     <string name="fake_call_connected_timer">00:00</string>
     <string name="fake_call_mute">Mute</string>
@@ -13,6 +28,8 @@
     <string name="fake_call_decline">Decline</string>
     <string name="fake_call_answer">Answer</string>
     <string name="phone_eyebrow">Fake Calling</string>
+    <string name="phone_header_calling">Calling…</string>
+    <string name="phone_subtitle_compact">Set a caller, optional photo and in-call voice audio, then tap Call.</string>
     <string name="phone_title">Trigger a fake incoming call on this phone</string>
     <string name="phone_subtitle">Use the phone controls below or tap the Wear app to send a fake call from your watch.</string>
     <string name="phone_caller_label">Caller name</string>
@@ -30,14 +47,76 @@
     <string name="phone_delay_5">5s</string>
     <string name="phone_delay_15">15s</string>
     <string name="phone_delay_30">30s</string>
+    <string name="phone_delay_1m">1 min</string>
+    <string name="phone_delay_5m">5 min</string>
+    <string name="phone_delay_10m">10 min</string>
+    <string name="phone_delay_pick_time_desc">Pick clock time</string>
+    <string name="phone_delay_pick_time_title">Ring at this time</string>
+    <string name="phone_pick_future_time">Choose a clock time in the future, or pick a different delay.</string>
+    <string name="phone_caller_voice_label">Caller voice</string>
+    <string name="phone_voice_saved">Caller voice updated. It will play after you answer the call.</string>
+    <string name="phone_voice_failed">Could not use that audio file. Try a different one.</string>
+    <string name="phone_voice_cleared">Caller voice removed.</string>
+    <string name="content_desc_caller_voice">Caller voice (plays after you answer)</string>
+    <string name="phone_nav_call">Call</string>
+    <string name="phone_nav_schedule">Schedule</string>
+    <string name="phone_nav_settings">Settings</string>
+    <string name="phone_settings_body">Open Call themes to pick Samsung or OnePlus incoming call chrome. Below you can still tune backgrounds and layout.</string>
+
+    <!-- Incoming themes entry (Settings) -->
+    <string name="settings_incoming_ui_section">Call themes</string>
+    <string name="settings_open_call_themes">Select incoming theme</string>
+    <string name="settings_call_themes_hint">Opens a gallery where you choose Samsung One UI, Samsung simple, or OnePlus-style incoming call screens.</string>
+
+    <!-- Themes gallery activity -->
+    <string name="themes_screen_title">Select Theme</string>
+    <string name="themes_tab_samsung">SAMSUNG</string>
+    <string name="themes_tab_oneplus">ONEPLUS</string>
+    <string name="theme_card_oneplus_oxygen">OnePlus Oxygen</string>
+    <string name="themes_apply">Apply theme</string>
+    <string name="themes_applied">Incoming theme saved.</string>
+    <string name="theme_card_samsung_one_ui">Samsung One UI</string>
+    <string name="theme_card_samsung_swipe_up">Samsung (swipe up, simple)</string>
+    <string name="themes_preview">Preview</string>
+    <string name="themes_customize">Customize</string>
+    <string name="themes_icon_preview_stub">Full preview will be available in a future update.</string>
+    <string name="themes_icon_edit_stub">Theme editing will be available in a future update.</string>
+
+    <string name="settings_call_screen_section">Background &amp; layout</string>
+    <string name="settings_call_background_section">Background</string>
+    <string name="settings_call_background_samsung_hint">Samsung Galaxy–style</string>
+    <string name="settings_layout_oem_hint">Tighter or roomier controls on the in-call screen.</string>
+    <string name="settings_theme_custom_first">Choose a background photo with the button below, then select this option.</string>
+    <string name="settings_theme_contact_first">Set a caller photo on the main screen first, then select this option.</string>
+    <string name="settings_theme_gradient_label">Moving gradient\nDefault: soft animated color wash behind the call UI.</string>
+    <string name="settings_theme_custom_label">Custom gallery photo\nFull-screen photo from your gallery (stored on this device).</string>
+    <string name="settings_theme_dark_label">Dark background\nStatic dark backdrop for the call screen.</string>
+    <string name="settings_theme_contact_label">Contact photo focus\nUses your caller photo from the main screen as a full-screen backdrop with a dim overlay.</string>
+    <string name="settings_pick_call_background">Choose background photo</string>
+    <string name="settings_clear_call_background">Remove background photo</string>
+    <string name="settings_call_background_saved">Call background photo saved.</string>
+    <string name="settings_call_background_failed">Could not use that image. Try another photo.</string>
+    <string name="settings_call_background_cleared">Call background photo removed.</string>
+    <string name="settings_layout_section">Layout</string>
+    <string name="settings_layout_standard_label">Standard\nDefault spacing and avatar size.</string>
+    <string name="settings_layout_compact_label">Compact\nTighter layout (similar to optional compact call layouts on some phones).</string>
+    <string name="settings_per_contact_note">Per-contact backgrounds on real devices are set in your Contacts app. Fake calls always use the caller name and photo you set on the main screen.</string>
+    <string name="settings_privacy_policy">Privacy policy</string>
+    <string name="privacy_policy_url">https://github.com/Arpanchristian2507/Calling/blob/main/docs/privacy-policy.md</string>
+    <string name="screen_schedule_title">Scheduled calls</string>
+    <string name="schedule_empty">No upcoming fake calls scheduled.</string>
+    <string name="schedule_cancel_this">Cancel</string>
+    <string name="schedule_cancelled_one">That scheduled call was cancelled.</string>
     <string name="phone_trigger_button">Trigger fake call</string>
     <string name="phone_cancel_button">Cancel scheduled call</string>
     <string name="phone_watch_hint">Tip: keep the companion app open once on your phone so your watch can discover it faster.</string>
     <string name="phone_scheduled_label">Scheduled status</string>
     <string name="phone_scheduled_none">No fake call is currently scheduled.</string>
     <string name="phone_scheduled_summary">Next fake call: %1$s at %2$s</string>
+    <string name="phone_scheduled_multi_summary">%1$d fake calls scheduled. Next: %2$s at %3$s</string>
     <string name="phone_triggered_now">%1$s is calling now.</string>
     <string name="phone_triggered_delay">%1$s will call in %2$d seconds.</string>
+    <string name="phone_triggered_at_time">%1$s is scheduled to ring at %2$s.</string>
     <string name="phone_cancelled">Scheduled fake call cancelled.</string>
 
     <!-- Full-screen call UI (incoming + in-call layouts) -->

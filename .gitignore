@@ -13,3 +13,11 @@
 .externalNativeBuild
 .cxx
 local.properties
+keystore.properties
+*.jks
+*.keystore
+
+# Play upload bundles (do not commit signed artifacts)
+*.aab
+# Non-standard local copy path (official Gradle output is under each module's build/)
+mobile/storeSafe/

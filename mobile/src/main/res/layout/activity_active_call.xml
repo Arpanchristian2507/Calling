@@ -6,7 +6,7 @@
     android:id="@+id/activeCallRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_call_active_gradient"
+    android:background="@android:color/transparent"
     tools:context=".FakeIncomingCallActivity">
 
     <!-- On call label -->
@@ -142,10 +142,11 @@
         style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
         android:layout_width="64dp"
         android:layout_height="64dp"
+        android:checkable="true"
         android:contentDescription="@string/call_speaker"
         android:insetTop="0dp"
         android:insetBottom="0dp"
-        app:backgroundTint="#33FFFFFF"
+        app:backgroundTint="@color/speaker_button_background_tint"
         app:cornerRadius="32dp"
         app:icon="@drawable/ic_volume_up"
         app:iconGravity="textStart"

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Samsung-style lime → blue call screen -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="270"
+                android:endColor="#FF1976D2"
+                android:startColor="#FF9CCC65"
+                android:type="linear" />
+            <corners android:radius="14dp" />
+        </shape>
+    </item>
+    <!-- Hint of pulsing ring behind action area -->
+    <item
+        android:bottom="28dp"
+        android:left="18dp"
+        android:right="82dp">
+        <shape android:shape="oval">
+            <solid android:color="#55FFFFFF" />
+            <size
+                android:width="44dp"
+                android:height="44dp" />
+        </shape>
+    </item>
+    <item
+        android:bottom="22dp"
+        android:left="12dp"
+        android:right="76dp">
+        <shape android:shape="oval">
+            <solid android:color="#33FFFFFF" />
+            <size
+                android:width="56dp"
+                android:height="56dp" />
+        </shape>
+    </item>
+</layer-list>

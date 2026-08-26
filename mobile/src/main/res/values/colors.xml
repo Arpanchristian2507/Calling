@@ -51,6 +51,16 @@
     <color name="call_avatar_stroke">#55FFFFFF</color>
     <color name="call_dot_color">#55FFFFFF</color>
     <color name="call_home_bar">#44FFFFFF</color>
+    <color name="call_screen_bg_scrim">#99000000</color>
     <color name="call_ripple_green">#FF388E3C</color>
     <color name="call_ripple_red">#FFB71C1C</color>
+
+    <!-- Call themes gallery (dark) -->
+    <color name="themes_page_background">#FF141A18</color>
+    <color name="themes_app_bar">#FF24302C</color>
+    <color name="themes_card_surface">#FF1E2624</color>
+    <color name="themes_tab_unselected">#FF8A9E99</color>
+    <color name="themes_tab_selected">#FFFFFFFF</color>
+    <color name="themes_preview_border">#33FFFFFF</color>
+    <color name="oneplus_answer_green">#FF00C853</color>
 </resources>
