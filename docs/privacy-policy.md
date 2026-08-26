@@ -173,7 +173,7 @@ Always keep your Play Console declarations aligned with this document and the Ap
 If you have questions about this Privacy Policy or the App’s data practices, contact:
 
 **Arpan Christian**  
-Email: [arpanchristian2507@gmail.com](mailto:arpanchristian.dev@gmail.com)  
+Email: [arpanchristian.dev@gmail.com](mailto:arpanchristian.dev@gmail.com)  
 GitHub: [github.com/Arpanchristian2507/Calling](https://github.com/Arpanchristian2507/Calling)
 
 ---
