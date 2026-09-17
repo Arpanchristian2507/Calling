@@ -27,13 +27,17 @@
     <FrameLayout
         android:id="@+id/incomingCallRoot"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:clipToPadding="false">
 
         <!-- Samsung One UI–style incoming (reference: Galaxy Phone app) -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/incomingSamsungPane"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:clipChildren="false"
+            android:clipToPadding="false"
             android:visibility="visible">
 
             <LinearLayout
@@ -213,8 +217,8 @@
 
             <View
                 android:id="@+id/samsungDeclineSwipeGlow"
-                android:layout_width="@dimen/samsung_decline_btn_size"
-                android:layout_height="@dimen/samsung_decline_btn_size"
+                android:layout_width="@dimen/samsung_call_action_btn"
+                android:layout_height="@dimen/samsung_call_action_btn"
                 android:alpha="0"
                 android:background="@drawable/bg_samsung_swipe_glow_red"
                 android:elevation="8dp"
@@ -226,8 +230,8 @@
 
             <View
                 android:id="@+id/samsungAnswerSwipeGlow"
-                android:layout_width="@dimen/samsung_pickup_answer_size"
-                android:layout_height="@dimen/samsung_pickup_answer_size"
+                android:layout_width="@dimen/samsung_call_action_btn"
+                android:layout_height="@dimen/samsung_call_action_btn"
                 android:alpha="0"
                 android:background="@drawable/bg_samsung_swipe_glow_green"
                 android:elevation="8dp"
@@ -239,10 +243,10 @@
 
             <dev.arpan.calling.AccessibleTouchFrameLayout
                 android:id="@+id/samsungAnswerButton"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginStart="48dp"
-                android:layout_marginBottom="12dp"
+                android:layout_width="@dimen/samsung_call_action_btn"
+                android:layout_height="@dimen/samsung_call_action_btn"
+                android:layout_marginStart="40dp"
+                android:layout_marginBottom="20dp"
                 android:background="@drawable/bg_samsung_answer_action_circle"
                 android:clickable="true"
                 android:contentDescription="@string/fake_call_answer"
@@ -252,8 +256,8 @@
                 app:layout_constraintStart_toStartOf="parent">
 
                 <ImageView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
+                    android:layout_width="@dimen/samsung_call_action_icon"
+                    android:layout_height="@dimen/samsung_call_action_icon"
                     android:layout_gravity="center"
                     android:contentDescription="@string/fake_call_answer"
                     android:importantForAccessibility="no"
@@ -263,10 +267,10 @@
 
             <dev.arpan.calling.AccessibleTouchFrameLayout
                 android:id="@+id/samsungDeclineButton"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginEnd="48dp"
-                android:layout_marginBottom="12dp"
+                android:layout_width="@dimen/samsung_call_action_btn"
+                android:layout_height="@dimen/samsung_call_action_btn"
+                android:layout_marginEnd="40dp"
+                android:layout_marginBottom="20dp"
                 android:background="@drawable/bg_samsung_decline_action_circle"
                 android:clickable="true"
                 android:contentDescription="@string/fake_call_decline"
@@ -277,8 +281,8 @@
                 app:layout_constraintTop_toTopOf="@id/samsungAnswerButton">
 
                 <ImageView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
+                    android:layout_width="@dimen/samsung_call_action_icon"
+                    android:layout_height="@dimen/samsung_call_action_icon"
                     android:layout_gravity="center"
                     android:contentDescription="@null"
                     android:importantForAccessibility="no"
@@ -310,10 +314,11 @@
 
             <View
                 android:id="@+id/samsungHomeBar"
-                android:layout_width="@dimen/call_home_bar_width"
-                android:layout_height="@dimen/call_home_bar_height"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_marginBottom="@dimen/call_home_bar_bottom_margin"
-                android:background="@color/call_home_bar"
+                android:importantForAccessibility="no"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -479,10 +484,172 @@
 
             <View
                 android:id="@+id/onePlusHomeBar"
-                android:layout_width="@dimen/call_home_bar_width"
-                android:layout_height="@dimen/call_home_bar_height"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_marginBottom="@dimen/call_home_bar_bottom_margin"
-                android:background="@color/call_home_bar"
+                android:importantForAccessibility="no"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Basic iPhone-style incoming (tap decline / accept) -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/incomingIphonePane"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/iphoneIncomingLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/iphone_name_top_margin"
+                android:letterSpacing="0.04"
+                android:text="@string/fake_call_iphone_incoming_label"
+                android:textAllCaps="false"
+                android:textColor="#99FFFFFF"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/iphoneCallerName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="28dp"
+                android:layout_marginTop="10dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="2"
+                android:textColor="@color/white"
+                android:textSize="34sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iphoneIncomingLabel"
+                tools:text="Mom" />
+
+            <TextView
+                android:id="@+id/iphoneMobileLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="@string/fake_call_iphone_mobile"
+                android:textColor="#99FFFFFF"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iphoneCallerName" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/iphoneCallerAvatarCard"
+                android:layout_width="@dimen/iphone_avatar_size"
+                android:layout_height="@dimen/iphone_avatar_size"
+                android:layout_marginTop="28dp"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:cardCornerRadius="48dp"
+                app:cardElevation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iphoneMobileLabel"
+                app:strokeWidth="0dp">
+
+                <ImageView
+                    android:id="@+id/iphoneCallerAvatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/content_desc_caller_avatar"
+                    android:scaleType="centerCrop" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                android:id="@+id/iphoneDeclineColumn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginBottom="@dimen/iphone_actions_bottom_margin"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toTopOf="@id/iphoneHomeBar"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <FrameLayout
+                    android:id="@+id/iphoneDeclineButton"
+                    android:layout_width="@dimen/iphone_action_btn_size"
+                    android:layout_height="@dimen/iphone_action_btn_size"
+                    android:background="@drawable/bg_iphone_decline"
+                    android:clickable="true"
+                    android:contentDescription="@string/fake_call_decline"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:layout_width="@dimen/iphone_action_icon_size"
+                        android:layout_height="@dimen/iphone_action_icon_size"
+                        android:layout_gravity="center"
+                        android:contentDescription="@null"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_call_decline"
+                        app:tint="@color/white" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/fake_call_decline"
+                    android:textColor="@color/white"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/iphoneAcceptColumn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="36dp"
+                android:layout_marginBottom="@dimen/iphone_actions_bottom_margin"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toTopOf="@id/iphoneHomeBar"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <FrameLayout
+                    android:id="@+id/iphoneAcceptButton"
+                    android:layout_width="@dimen/iphone_action_btn_size"
+                    android:layout_height="@dimen/iphone_action_btn_size"
+                    android:background="@drawable/bg_iphone_accept"
+                    android:clickable="true"
+                    android:contentDescription="@string/fake_call_answer"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:layout_width="@dimen/iphone_action_icon_size"
+                        android:layout_height="@dimen/iphone_action_icon_size"
+                        android:layout_gravity="center"
+                        android:contentDescription="@null"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_call_answer"
+                        app:tint="@color/white" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/fake_call_answer"
+                    android:textColor="@color/white"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/iphoneHomeBar"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="@dimen/call_home_bar_bottom_margin"
+                android:importantForAccessibility="no"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />

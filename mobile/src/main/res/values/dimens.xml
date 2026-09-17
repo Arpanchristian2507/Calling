@@ -82,4 +82,12 @@
     <dimen name="oneplus_name_top_margin">72dp</dimen>
     <dimen name="oneplus_name_top_margin_compact">56dp</dimen>
 
+    <!-- iPhone incoming -->
+    <dimen name="iphone_name_top_margin">72dp</dimen>
+    <dimen name="iphone_name_top_margin_compact">56dp</dimen>
+    <dimen name="iphone_avatar_size">96dp</dimen>
+    <dimen name="iphone_action_btn_size">76dp</dimen>
+    <dimen name="iphone_action_icon_size">32dp</dimen>
+    <dimen name="iphone_actions_bottom_margin">36dp</dimen>
+
 </resources>

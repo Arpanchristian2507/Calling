@@ -27,24 +27,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingHorizontal="20dp"
-            android:paddingTop="8dp">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="16dp"
-                android:text="@string/phone_settings_body"
-                android:textColor="@color/calling_on_surface_variant"
-                android:textSize="15sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="12dp"
-                android:text="@string/settings_incoming_ui_section"
-                android:textColor="@color/calling_on_surface"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+            android:paddingTop="16dp">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/openCallThemes"
@@ -62,7 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="8dp"
-                android:paddingBottom="8dp"
+                android:paddingBottom="20dp"
                 android:text="@string/settings_call_themes_hint"
                 android:textColor="@color/calling_on_surface_variant"
                 android:textSize="13sp" />
@@ -70,28 +53,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="8dp"
-                android:text="@string/settings_call_screen_section"
-                android:textColor="@color/calling_on_surface"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:paddingBottom="4dp"
                 android:text="@string/settings_call_background_section"
                 android:textColor="@color/calling_on_surface"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="8dp"
-                android:text="@string/settings_call_background_samsung_hint"
-                android:textColor="@color/calling_on_surface_variant"
-                android:textSize="12sp" />
 
             <RadioGroup
                 android:id="@+id/backgroundStyleGroup"
@@ -136,7 +102,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:paddingBottom="20dp">
+                android:paddingBottom="8dp">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/pickCallBackground"
@@ -156,60 +122,12 @@
                     android:visibility="gone" />
             </LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="4dp"
-                android:text="@string/settings_layout_section"
-                android:textColor="@color/calling_on_surface"
-                android:textSize="14sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="8dp"
-                android:text="@string/settings_layout_oem_hint"
-                android:textColor="@color/calling_on_surface_variant"
-                android:textSize="12sp" />
-
-            <RadioGroup
-                android:id="@+id/layoutStyleGroup"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="16dp">
-
-                <com.google.android.material.radiobutton.MaterialRadioButton
-                    android:id="@+id/radio_layout_standard"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="48dp"
-                    android:text="@string/settings_layout_standard_label"
-                    android:textColor="@color/calling_on_surface" />
-
-                <com.google.android.material.radiobutton.MaterialRadioButton
-                    android:id="@+id/radio_layout_compact"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="48dp"
-                    android:text="@string/settings_layout_compact_label"
-                    android:textColor="@color/calling_on_surface" />
-            </RadioGroup>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lineSpacingExtra="2dp"
-                android:text="@string/settings_per_contact_note"
-                android:textColor="@color/calling_on_surface_variant"
-                android:textSize="13sp" />
-
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/openPrivacyPolicy"
                 style="@style/Widget.Material3.Button.TextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="16dp"
                 android:paddingHorizontal="0dp"
                 android:text="@string/settings_privacy_policy"
                 android:textSize="14sp" />

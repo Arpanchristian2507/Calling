@@ -8,7 +8,9 @@
     <string name="fake_call_samsung_hd_badge">HD</string>
     <string name="fake_call_samsung_sim_slot_label">1</string>
     <string name="fake_call_samsung_incoming_title">Incoming call</string>
-    <string name="fake_call_samsung_subtitle">Mobile 123456789 · Drag a button away to answer or decline</string>
+    <string name="fake_call_samsung_subtitle">Mobile</string>
+    <string name="fake_call_iphone_incoming_label">incoming call</string>
+    <string name="fake_call_iphone_mobile">mobile</string>
     <string name="fake_call_samsung_send_message">Send message</string>
     <string name="fake_call_samsung_send_message_stub">Send message is not available for fake calls.</string>
     <string name="fake_call_oneplus_call_from">Call From</string>
@@ -61,18 +63,17 @@
     <string name="phone_nav_call">Call</string>
     <string name="phone_nav_schedule">Schedule</string>
     <string name="phone_nav_settings">Settings</string>
-    <string name="phone_settings_body">Open Call themes to pick Samsung or OnePlus incoming call chrome. Below you can still tune backgrounds and layout.</string>
-
     <!-- Incoming themes entry (Settings) -->
-    <string name="settings_incoming_ui_section">Call themes</string>
-    <string name="settings_open_call_themes">Select incoming theme</string>
-    <string name="settings_call_themes_hint">Opens a gallery where you choose Samsung One UI, Samsung simple, or OnePlus-style incoming call screens.</string>
+    <string name="settings_open_call_themes">Call themes</string>
+    <string name="settings_call_themes_hint">Samsung, OnePlus, or iPhone incoming screens.</string>
 
     <!-- Themes gallery activity -->
     <string name="themes_screen_title">Select Theme</string>
     <string name="themes_tab_samsung">SAMSUNG</string>
     <string name="themes_tab_oneplus">ONEPLUS</string>
+    <string name="themes_tab_iphone">IPHONE</string>
     <string name="theme_card_oneplus_oxygen">OnePlus Oxygen</string>
+    <string name="theme_card_iphone_basic">iPhone</string>
     <string name="themes_apply">Apply theme</string>
     <string name="themes_applied">Incoming theme saved.</string>
     <string name="theme_card_samsung_one_ui">Samsung One UI</string>
@@ -82,25 +83,18 @@
     <string name="themes_icon_preview_stub">Full preview will be available in a future update.</string>
     <string name="themes_icon_edit_stub">Theme editing will be available in a future update.</string>
 
-    <string name="settings_call_screen_section">Background &amp; layout</string>
     <string name="settings_call_background_section">Background</string>
-    <string name="settings_call_background_samsung_hint">Samsung Galaxy–style</string>
-    <string name="settings_layout_oem_hint">Tighter or roomier controls on the in-call screen.</string>
-    <string name="settings_theme_custom_first">Choose a background photo with the button below, then select this option.</string>
+    <string name="settings_theme_custom_first">Choose a background photo first, then select this option.</string>
     <string name="settings_theme_contact_first">Set a caller photo on the main screen first, then select this option.</string>
-    <string name="settings_theme_gradient_label">Moving gradient\nDefault: soft animated color wash behind the call UI.</string>
-    <string name="settings_theme_custom_label">Custom gallery photo\nFull-screen photo from your gallery (stored on this device).</string>
-    <string name="settings_theme_dark_label">Dark background\nStatic dark backdrop for the call screen.</string>
-    <string name="settings_theme_contact_label">Contact photo focus\nUses your caller photo from the main screen as a full-screen backdrop with a dim overlay.</string>
+    <string name="settings_theme_gradient_label">Moving gradient</string>
+    <string name="settings_theme_custom_label">Gallery photo</string>
+    <string name="settings_theme_dark_label">Dark</string>
+    <string name="settings_theme_contact_label">Caller photo</string>
     <string name="settings_pick_call_background">Choose background photo</string>
     <string name="settings_clear_call_background">Remove background photo</string>
     <string name="settings_call_background_saved">Call background photo saved.</string>
     <string name="settings_call_background_failed">Could not use that image. Try another photo.</string>
     <string name="settings_call_background_cleared">Call background photo removed.</string>
-    <string name="settings_layout_section">Layout</string>
-    <string name="settings_layout_standard_label">Standard\nDefault spacing and avatar size.</string>
-    <string name="settings_layout_compact_label">Compact\nTighter layout (similar to optional compact call layouts on some phones).</string>
-    <string name="settings_per_contact_note">Per-contact backgrounds on real devices are set in your Contacts app. Fake calls always use the caller name and photo you set on the main screen.</string>
     <string name="settings_privacy_policy">Privacy policy</string>
     <string name="privacy_policy_url">https://github.com/Arpanchristian2507/Calling/blob/main/docs/privacy-policy.md</string>
     <string name="screen_schedule_title">Scheduled calls</string>

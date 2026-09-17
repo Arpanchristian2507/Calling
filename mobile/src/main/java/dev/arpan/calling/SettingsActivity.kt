@@ -107,25 +107,6 @@ class SettingsActivity : AppCompatActivity() {
             FakeCallScreenThemeStore.setBackgroundStyle(this, style)
         }
 
-        binding.layoutStyleGroup.setOnCheckedChangeListener(null)
-        when (FakeCallScreenThemeStore.getLayoutStyle(this)) {
-            FakeCallScreenThemeStore.CallLayoutStyle.STANDARD ->
-                binding.layoutStyleGroup.check(R.id.radio_layout_standard)
-            FakeCallScreenThemeStore.CallLayoutStyle.COMPACT ->
-                binding.layoutStyleGroup.check(R.id.radio_layout_compact)
-        }
-        binding.layoutStyleGroup.setOnCheckedChangeListener { _, checkedId ->
-            val layout =
-                when (checkedId) {
-                    R.id.radio_layout_standard ->
-                        FakeCallScreenThemeStore.CallLayoutStyle.STANDARD
-                    R.id.radio_layout_compact ->
-                        FakeCallScreenThemeStore.CallLayoutStyle.COMPACT
-                    else -> return@setOnCheckedChangeListener
-                }
-            FakeCallScreenThemeStore.setLayoutStyle(this, layout)
-        }
-
         binding.clearCallBackground.visibility =
             if (CallBackgroundImageStore.hasCustomBackground(this)) {
                 View.VISIBLE

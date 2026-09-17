@@ -49,6 +49,8 @@ class FakeIncomingCallActivity : AppCompatActivity() {
     private var opKnobAccumulatedDy = 0f
     private var opKnobExceededTouchSlop = false
     private val opMaxSlidePx by lazy { 200f * resources.displayMetrics.density }
+    private var systemInsetTop: Int = 0
+    private var systemInsetBottom: Int = 0
 
     private val timerRunnable =
         object : Runnable {
@@ -70,6 +72,9 @@ class FakeIncomingCallActivity : AppCompatActivity() {
     private fun useOnePlusIncomingUi(): Boolean =
         incomingBrand() == FakeCallScreenThemeStore.IncomingCallUiBrand.ONEPLUS
 
+    private fun useIphoneIncomingUi(): Boolean =
+        incomingBrand() == FakeCallScreenThemeStore.IncomingCallUiBrand.IPHONE
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -79,9 +84,11 @@ class FakeIncomingCallActivity : AppCompatActivity() {
         binding = ActivityFakeIncomingCallBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        ViewCompat.setOnApplyWindowInsetsListener(binding.callScreensRoot) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(binding.callScreensRoot) { _, insets ->
             val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(bars.left, bars.top, bars.right, bars.bottom)
+            systemInsetTop = bars.top
+            systemInsetBottom = bars.bottom
+            refreshCallScreenChrome()
             insets
         }
 
@@ -94,13 +101,14 @@ class FakeIncomingCallActivity : AppCompatActivity() {
     private fun setCallerDisplayName(name: CharSequence) {
         binding.samsungCallerName.text = name
         binding.onePlusCallerName.text = name
+        binding.iphoneCallerName.text = name
     }
 
     private fun callerDisplayName(): CharSequence =
-        if (useSamsungIncomingUi()) {
-            binding.samsungCallerName.text
-        } else {
-            binding.onePlusCallerName.text
+        when {
+            useSamsungIncomingUi() -> binding.samsungCallerName.text
+            useIphoneIncomingUi() -> binding.iphoneCallerName.text
+            else -> binding.onePlusCallerName.text
         }
 
     private fun wireIncomingActions() {
@@ -121,6 +129,9 @@ class FakeIncomingCallActivity : AppCompatActivity() {
             binding.onePlusReplyPill.setOnClickListener {
                 Toast.makeText(this, R.string.fake_call_oneplus_reply_stub, Toast.LENGTH_SHORT).show()
             }
+        } else if (useIphoneIncomingUi()) {
+            binding.iphoneAcceptButton.setOnClickListener { answerCall() }
+            binding.iphoneDeclineButton.setOnClickListener { endIncoming() }
         }
     }
 
@@ -582,7 +593,12 @@ class FakeIncomingCallActivity : AppCompatActivity() {
     }
 
     private fun refreshCallScreenChrome() {
-        CallScreenStyleApplier.apply(binding, activeCallBinding)
+        CallScreenStyleApplier.apply(
+            binding,
+            activeCallBinding,
+            systemInsetTop = systemInsetTop,
+            systemInsetBottom = systemInsetBottom,
+        )
     }
 
     private fun applyIncomingPaneVisibility() {
@@ -590,6 +606,8 @@ class FakeIncomingCallActivity : AppCompatActivity() {
             if (useSamsungIncomingUi()) View.VISIBLE else View.GONE
         binding.incomingOnePlusPane.visibility =
             if (useOnePlusIncomingUi()) View.VISIBLE else View.GONE
+        binding.incomingIphonePane.visibility =
+            if (useIphoneIncomingUi()) View.VISIBLE else View.GONE
     }
 
     override fun onStart() {
@@ -722,6 +740,11 @@ class FakeIncomingCallActivity : AppCompatActivity() {
         CallerAvatarStore.apply(
             this,
             binding.samsungCallerAvatar,
+            CallerAvatarStore.AvatarStyle.INCOMING_SCREEN,
+        )
+        CallerAvatarStore.apply(
+            this,
+            binding.iphoneCallerAvatar,
             CallerAvatarStore.AvatarStyle.INCOMING_SCREEN,
         )
         activeCallBinding?.let { active ->

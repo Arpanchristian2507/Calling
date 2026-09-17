@@ -63,4 +63,6 @@
     <color name="themes_tab_selected">#FFFFFFFF</color>
     <color name="themes_preview_border">#33FFFFFF</color>
     <color name="oneplus_answer_green">#FF00C853</color>
+    <color name="iphone_accept_green">#FF34C759</color>
+    <color name="iphone_decline_red">#FFFF3B30</color>
 </resources>

@@ -4,7 +4,7 @@ import android.content.Context
 
 /**
  * User preferences for the full-screen fake incoming / active call appearance.
- * Incoming OEM chrome: Samsung variants vs OnePlus, selected from the in-app themes gallery.
+ * Incoming OEM chrome: Samsung variants, OnePlus, or iPhone, selected from the in-app themes gallery.
  */
 object FakeCallScreenThemeStore {
     private const val PREFS = "dev.arpan.calling.fake_call_screen_theme"
@@ -24,6 +24,9 @@ object FakeCallScreenThemeStore {
         SAMSUNG_SWIPE_UP,
 
         ONEPLUS,
+
+        /** Basic iOS-style incoming: name, mobile label, tap to decline or accept. */
+        IPHONE,
     }
 
     enum class CallBackgroundStyle {

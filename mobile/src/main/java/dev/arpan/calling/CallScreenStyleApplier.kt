@@ -24,6 +24,8 @@ object CallScreenStyleApplier {
     fun apply(
         binding: ActivityFakeIncomingCallBinding,
         activeBinding: ActivityActiveCallBinding?,
+        systemInsetTop: Int = 0,
+        systemInsetBottom: Int = 0,
     ) {
         val context = binding.root.context
         val style = resolveEffectiveBackgroundStyle(context)
@@ -69,8 +71,8 @@ object CallScreenStyleApplier {
             }
         }
 
-        applyIncomingLayout(binding, layoutStyle)
-        activeBinding?.let { applyActiveLayout(it, layoutStyle) }
+        applyIncomingLayout(binding, layoutStyle, systemInsetTop, systemInsetBottom)
+        activeBinding?.let { applyActiveLayout(it, layoutStyle, systemInsetTop) }
     }
 
     private fun defaultMovingGradientDrawable(brand: FakeCallScreenThemeStore.IncomingCallUiBrand): Int =
@@ -80,6 +82,8 @@ object CallScreenStyleApplier {
             -> R.drawable.anim_samsung_call_screen_gradient
             FakeCallScreenThemeStore.IncomingCallUiBrand.ONEPLUS ->
                 R.drawable.bg_oneplus_solid
+            FakeCallScreenThemeStore.IncomingCallUiBrand.IPHONE ->
+                R.drawable.bg_iphone_solid
         }
 
     private fun resolveEffectiveBackgroundStyle(context: android.content.Context): FakeCallScreenThemeStore.CallBackgroundStyle {
@@ -104,20 +108,26 @@ object CallScreenStyleApplier {
     private fun applyIncomingLayout(
         binding: ActivityFakeIncomingCallBinding,
         layoutStyle: FakeCallScreenThemeStore.CallLayoutStyle,
+        systemInsetTop: Int,
+        systemInsetBottom: Int,
     ) {
         val context = binding.root.context
         when (FakeCallScreenThemeStore.getIncomingUiBrand(context)) {
             FakeCallScreenThemeStore.IncomingCallUiBrand.SAMSUNG_ONE_UI,
             FakeCallScreenThemeStore.IncomingCallUiBrand.SAMSUNG_SWIPE_UP,
-            -> applySamsungIncomingLayout(binding, layoutStyle)
+            -> applySamsungIncomingLayout(binding, layoutStyle, systemInsetTop, systemInsetBottom)
             FakeCallScreenThemeStore.IncomingCallUiBrand.ONEPLUS ->
-                applyOnePlusIncomingLayout(binding, layoutStyle)
+                applyOnePlusIncomingLayout(binding, layoutStyle, systemInsetTop, systemInsetBottom)
+            FakeCallScreenThemeStore.IncomingCallUiBrand.IPHONE ->
+                applyIphoneIncomingLayout(binding, layoutStyle, systemInsetTop, systemInsetBottom)
         }
     }
 
     private fun applySamsungIncomingLayout(
         binding: ActivityFakeIncomingCallBinding,
         layoutStyle: FakeCallScreenThemeStore.CallLayoutStyle,
+        systemInsetTop: Int,
+        systemInsetBottom: Int,
     ) {
         val res = binding.root.resources
         val topRowPx =
@@ -126,7 +136,7 @@ object CallScreenStyleApplier {
                     res.getDimensionPixelSize(R.dimen.samsung_incoming_top_margin)
                 FakeCallScreenThemeStore.CallLayoutStyle.COMPACT ->
                     res.getDimensionPixelSize(R.dimen.samsung_incoming_top_margin_compact)
-            }
+            } + systemInsetTop
         (binding.samsungHdRow.layoutParams as ConstraintLayout.LayoutParams).topMargin = topRowPx
         binding.samsungHdRow.requestLayout()
 
@@ -138,11 +148,14 @@ object CallScreenStyleApplier {
                     res.getDimension(R.dimen.samsung_caller_name_sp_compact)
             }
         binding.samsungCallerName.setTextSize(TypedValue.COMPLEX_UNIT_PX, nameSizePx)
+        applyBottomInsetSpacer(binding.samsungHomeBar, systemInsetBottom)
     }
 
     private fun applyOnePlusIncomingLayout(
         binding: ActivityFakeIncomingCallBinding,
         layoutStyle: FakeCallScreenThemeStore.CallLayoutStyle,
+        systemInsetTop: Int,
+        systemInsetBottom: Int,
     ) {
         val res = binding.root.resources
         val topFromPx =
@@ -151,7 +164,7 @@ object CallScreenStyleApplier {
                     res.getDimensionPixelSize(R.dimen.oneplus_name_top_margin)
                 FakeCallScreenThemeStore.CallLayoutStyle.COMPACT ->
                     res.getDimensionPixelSize(R.dimen.oneplus_name_top_margin_compact)
-            }
+            } + systemInsetTop
         (binding.onePlusCallFrom.layoutParams as ConstraintLayout.LayoutParams).topMargin = topFromPx
         binding.onePlusCallFrom.requestLayout()
 
@@ -161,11 +174,46 @@ object CallScreenStyleApplier {
                 FakeCallScreenThemeStore.CallLayoutStyle.COMPACT -> 30f
             }
         binding.onePlusCallerName.setTextSize(TypedValue.COMPLEX_UNIT_SP, nameSp)
+        applyBottomInsetSpacer(binding.onePlusHomeBar, systemInsetBottom)
+    }
+
+    private fun applyIphoneIncomingLayout(
+        binding: ActivityFakeIncomingCallBinding,
+        layoutStyle: FakeCallScreenThemeStore.CallLayoutStyle,
+        systemInsetTop: Int,
+        systemInsetBottom: Int,
+    ) {
+        val res = binding.root.resources
+        val topFromPx =
+            when (layoutStyle) {
+                FakeCallScreenThemeStore.CallLayoutStyle.STANDARD ->
+                    res.getDimensionPixelSize(R.dimen.iphone_name_top_margin)
+                FakeCallScreenThemeStore.CallLayoutStyle.COMPACT ->
+                    res.getDimensionPixelSize(R.dimen.iphone_name_top_margin_compact)
+            } + systemInsetTop
+        (binding.iphoneIncomingLabel.layoutParams as ConstraintLayout.LayoutParams).topMargin = topFromPx
+        binding.iphoneIncomingLabel.requestLayout()
+
+        val nameSp =
+            when (layoutStyle) {
+                FakeCallScreenThemeStore.CallLayoutStyle.STANDARD -> 34f
+                FakeCallScreenThemeStore.CallLayoutStyle.COMPACT -> 28f
+            }
+        binding.iphoneCallerName.setTextSize(TypedValue.COMPLEX_UNIT_SP, nameSp)
+        applyBottomInsetSpacer(binding.iphoneHomeBar, systemInsetBottom)
+    }
+
+    private fun applyBottomInsetSpacer(spacer: View, systemInsetBottom: Int) {
+        val min = spacer.resources.getDimensionPixelSize(R.dimen.call_home_bar_bottom_margin)
+        val lp = spacer.layoutParams as ConstraintLayout.LayoutParams
+        lp.bottomMargin = maxOf(systemInsetBottom, min)
+        spacer.layoutParams = lp
     }
 
     private fun applyActiveLayout(
         active: ActivityActiveCallBinding,
         layoutStyle: FakeCallScreenThemeStore.CallLayoutStyle,
+        systemInsetTop: Int,
     ) {
         val res = active.root.resources
         val topMarginPx =
@@ -173,7 +221,7 @@ object CallScreenStyleApplier {
                 FakeCallScreenThemeStore.CallLayoutStyle.STANDARD -> res.getDimensionPixelSize(R.dimen.call_top_margin)
                 FakeCallScreenThemeStore.CallLayoutStyle.COMPACT ->
                     res.getDimensionPixelSize(R.dimen.call_top_margin_compact)
-            }
+            } + systemInsetTop
         val avatarTopPx =
             when (layoutStyle) {
                 FakeCallScreenThemeStore.CallLayoutStyle.STANDARD ->

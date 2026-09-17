@@ -37,6 +37,15 @@ class CallThemesActivity : AppCompatActivity() {
             ),
         )
 
+    private val iPhoneThemes =
+        listOf(
+            CallThemesAdapter.ThemeCardItem(
+                R.string.theme_card_iphone_basic,
+                FakeCallScreenThemeStore.IncomingCallUiBrand.IPHONE,
+                R.drawable.mini_preview_iphone,
+            ),
+        )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -52,10 +61,10 @@ class CallThemesActivity : AppCompatActivity() {
         binding.toolbar.setNavigationOnClickListener { finish() }
 
         val initial = FakeCallScreenThemeStore.getIncomingUiBrand(this)
-        val onSamsungSide = FakeCallScreenThemeStore.isSamsungIncomingFamily(initial)
+        val startTab = tabIndexForBrand(initial)
         adapter =
             CallThemesAdapter(
-                items = if (onSamsungSide) samsungThemes else onePlusThemes,
+                items = themesForTab(startTab),
                 selectedBrand = initial,
                 onIconAction = { action ->
                     val msg =
@@ -72,27 +81,17 @@ class CallThemesActivity : AppCompatActivity() {
         binding.themeRecycler.layoutManager = GridLayoutManager(this, 2)
         binding.themeRecycler.adapter = adapter
 
-        val startTab = if (onSamsungSide) 0 else 1
         binding.themeTabs.getTabAt(startTab)?.select()
-        adapter.submitList(if (startTab == 0) samsungThemes else onePlusThemes)
 
         binding.themeTabs.addOnTabSelectedListener(
             object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab?) {
-                    when (tab?.position) {
-                        0 -> {
-                            if (!FakeCallScreenThemeStore.isSamsungIncomingFamily(adapter.selectedBrand())) {
-                                adapter.setSelectedBrand(FakeCallScreenThemeStore.IncomingCallUiBrand.SAMSUNG_ONE_UI)
-                            }
-                            adapter.submitList(samsungThemes)
-                        }
-                        1 -> {
-                            if (adapter.selectedBrand() != FakeCallScreenThemeStore.IncomingCallUiBrand.ONEPLUS) {
-                                adapter.setSelectedBrand(FakeCallScreenThemeStore.IncomingCallUiBrand.ONEPLUS)
-                            }
-                            adapter.submitList(onePlusThemes)
-                        }
+                    val position = tab?.position ?: return
+                    val items = themesForTab(position)
+                    if (items.none { it.brand == adapter.selectedBrand() }) {
+                        adapter.setSelectedBrand(items.first().brand)
                     }
+                    adapter.submitList(items)
                 }
 
                 override fun onTabUnselected(tab: TabLayout.Tab?) {}
@@ -107,4 +106,20 @@ class CallThemesActivity : AppCompatActivity() {
             finish()
         }
     }
+
+    private fun themesForTab(position: Int): List<CallThemesAdapter.ThemeCardItem> =
+        when (position) {
+            1 -> onePlusThemes
+            2 -> iPhoneThemes
+            else -> samsungThemes
+        }
+
+    private fun tabIndexForBrand(brand: FakeCallScreenThemeStore.IncomingCallUiBrand): Int =
+        when (brand) {
+            FakeCallScreenThemeStore.IncomingCallUiBrand.ONEPLUS -> 1
+            FakeCallScreenThemeStore.IncomingCallUiBrand.IPHONE -> 2
+            FakeCallScreenThemeStore.IncomingCallUiBrand.SAMSUNG_ONE_UI,
+            FakeCallScreenThemeStore.IncomingCallUiBrand.SAMSUNG_SWIPE_UP,
+            -> 0
+        }
 }
