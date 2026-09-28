@@ -49,21 +49,33 @@ object CallBackgroundImageStore {
 
     fun decodeIfPresent(context: Context): Bitmap? {
         if (!hasCustomBackground(context)) return null
-        return BitmapFactory.decodeFile(storedFile(context).absolutePath)
+        val metrics = context.resources.displayMetrics
+        return decodeDownsampledFile(
+            storedFile(context).absolutePath,
+            metrics.widthPixels,
+            metrics.heightPixels,
+        )
     }
 
     private fun decodeSampledBitmap(bytes: ByteArray): Bitmap? {
         if (bytes.isEmpty()) return null
-        val bounds = BitmapFactory.Options().apply { inJustDecodeBounds = true }
+        val bounds =
+            BitmapFactory.Options().apply {
+                inJustDecodeBounds = true
+                inSampleSize = 1
+            }
         BitmapFactory.decodeByteArray(bytes, 0, bytes.size, bounds)
         if (bounds.outWidth <= 0 || bounds.outHeight <= 0) return null
-        var inSampleSize = 1
-        while (bounds.outWidth / inSampleSize > MAX_BITMAP_SIDE_PX ||
-            bounds.outHeight / inSampleSize > MAX_BITMAP_SIDE_PX
-        ) {
-            inSampleSize *= 2
-        }
-        val opts = BitmapFactory.Options().apply { inSampleSize = inSampleSize }
+        val opts =
+            BitmapFactory.Options().apply {
+                inSampleSize =
+                    inSampleSizeToFit(
+                        bounds.outWidth,
+                        bounds.outHeight,
+                        MAX_BITMAP_SIDE_PX,
+                        MAX_BITMAP_SIDE_PX,
+                    )
+            }
         return BitmapFactory.decodeByteArray(bytes, 0, bytes.size, opts)
     }
 }

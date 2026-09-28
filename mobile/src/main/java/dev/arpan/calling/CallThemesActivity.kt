@@ -2,10 +2,7 @@ package dev.arpan.calling
 
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.tabs.TabLayout
 import dev.arpan.calling.databinding.ActivityCallThemesBinding
@@ -47,16 +44,11 @@ class CallThemesActivity : AppCompatActivity() {
         )
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableDisplayEdgeToEdge()
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         binding = ActivityCallThemesBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
-            val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(bars.left, bars.top, bars.right, bars.bottom)
-            insets
-        }
+        binding.root.applyDisplayEdgeToEdgePadding()
 
         binding.toolbar.setNavigationOnClickListener { finish() }
 

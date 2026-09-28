@@ -7,13 +7,10 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
 import dev.arpan.calling.databinding.ActivityMainBinding
@@ -51,15 +48,11 @@ class MainActivity : AppCompatActivity() {
     private var clockRingAtMillis: Long? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableDisplayEdgeToEdge()
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+        binding.main.applyDisplayEdgeToEdgePadding()
         setupDelayButtons()
         binding.callerPhotoCard.setOnClickListener {
             pickCallerPhoto.launch(

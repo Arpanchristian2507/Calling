@@ -60,7 +60,12 @@ object CallerAvatarStore {
     /** Full-bleed backdrop for Pixel-style “contact photo” call screen. */
     fun decodeStoredAvatarBitmap(context: Context): Bitmap? {
         if (!hasCustomAvatar(context)) return null
-        return BitmapFactory.decodeFile(storedFile(context).absolutePath)
+        val metrics = context.resources.displayMetrics
+        return decodeDownsampledFile(
+            storedFile(context).absolutePath,
+            metrics.widthPixels,
+            metrics.heightPixels,
+        )
     }
 
     fun apply(context: Context, imageView: ImageView, style: AvatarStyle) {
@@ -83,8 +88,13 @@ object CallerAvatarStore {
             }
 
         if (hasCustomAvatar(context)) {
-            val path = storedFile(context).absolutePath
-            val bmp = BitmapFactory.decodeFile(path)
+            val targetPx = decodeTargetPx(imageView, style)
+            val bmp =
+                decodeDownsampledFile(
+                    storedFile(context).absolutePath,
+                    targetPx,
+                    targetPx,
+                )
             if (bmp != null) {
                 imageView.setImageBitmap(bmp)
                 imageView.imageTintList = null
@@ -107,16 +117,37 @@ object CallerAvatarStore {
 
     private fun decodeSampledBitmap(bytes: ByteArray): Bitmap? {
         if (bytes.isEmpty()) return null
-        val bounds = BitmapFactory.Options().apply { inJustDecodeBounds = true }
+        val bounds =
+            BitmapFactory.Options().apply {
+                inJustDecodeBounds = true
+                inSampleSize = 1
+            }
         BitmapFactory.decodeByteArray(bytes, 0, bytes.size, bounds)
         if (bounds.outWidth <= 0 || bounds.outHeight <= 0) return null
-        var inSampleSize = 1
-        while (bounds.outWidth / inSampleSize > MAX_BITMAP_SIDE_PX ||
-            bounds.outHeight / inSampleSize > MAX_BITMAP_SIDE_PX
-        ) {
-            inSampleSize *= 2
-        }
-        val opts = BitmapFactory.Options().apply { inSampleSize = inSampleSize }
+        val opts =
+            BitmapFactory.Options().apply {
+                inSampleSize =
+                    inSampleSizeToFit(
+                        bounds.outWidth,
+                        bounds.outHeight,
+                        MAX_BITMAP_SIDE_PX,
+                        MAX_BITMAP_SIDE_PX,
+                    )
+            }
         return BitmapFactory.decodeByteArray(bytes, 0, bytes.size, opts)
+    }
+
+    private fun decodeTargetPx(imageView: ImageView, style: AvatarStyle): Int {
+        val specified = imageView.layoutParams?.width ?: 0
+        if (specified > 0) return specified
+        val measured = maxOf(imageView.width, imageView.height)
+        if (measured > 0) return measured
+        val dimen =
+            when (style) {
+                AvatarStyle.MAIN_PREVIEW -> R.dimen.main_photo_voice_avatar
+                AvatarStyle.INCOMING_SCREEN -> R.dimen.samsung_incoming_avatar_size
+                AvatarStyle.ACTIVE_SCREEN -> R.dimen.call_avatar_size
+            }
+        return imageView.resources.getDimensionPixelSize(dimen)
     }
 }

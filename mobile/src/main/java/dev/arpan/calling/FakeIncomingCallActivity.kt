@@ -15,10 +15,8 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewConfiguration
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import dev.arpan.calling.databinding.ActivityActiveCallBinding
 import dev.arpan.calling.databinding.ActivityFakeIncomingCallBinding
 import java.util.Locale
@@ -76,18 +74,22 @@ class FakeIncomingCallActivity : AppCompatActivity() {
         incomingBrand() == FakeCallScreenThemeStore.IncomingCallUiBrand.IPHONE
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableDisplayEdgeToEdge(
+            appearanceLightSystemBars = false,
+            enforceNavigationBarContrast = false,
+        )
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         FakeCallNotifier.cancel(this)
         applyPersonalIncomingWindowFlags()
 
         binding = ActivityFakeIncomingCallBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        ViewCompat.setOnApplyWindowInsetsListener(binding.callScreensRoot) { _, insets ->
-            val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+        ViewCompat.setOnApplyWindowInsetsListener(binding.callScreensRoot) { v, insets ->
+            val bars = insets.systemBarsAndCutout()
             systemInsetTop = bars.top
             systemInsetBottom = bars.bottom
+            v.setPadding(bars.left, 0, bars.right, 0)
             refreshCallScreenChrome()
             insets
         }
